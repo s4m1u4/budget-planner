@@ -1,7 +1,7 @@
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 
@@ -57,7 +57,7 @@ const LoginForm = () => {
       <Typography
         variant="h6"
         component="h1"
-        sx={{ textAlign: "center", margin: "0 0 15px 0" }}
+        sx={{ textAlign: "center", margin: "0 0 10px 0" }}
       >
         Sign in
       </Typography>
@@ -69,6 +69,7 @@ const LoginForm = () => {
           size="small"
           label="Email"
           value={formik.values.email}
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           error={formik.touched.email && !!formik.errors.email}
           helperText={formik.touched.email && formik.errors.email}
@@ -80,6 +81,7 @@ const LoginForm = () => {
           size="small"
           label="Password"
           value={formik.values.password}
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange}
           error={formik.touched.password && !!formik.errors.password}
           helperText={formik.touched.password && formik.errors.password}
