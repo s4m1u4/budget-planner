@@ -2,10 +2,8 @@ import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import user from "../../../store/User";
 
-const LoginSchema = yup.object({
+const SignupSchema = yup.object({
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
@@ -16,9 +14,7 @@ const LoginSchema = yup.object({
     .required("Password is required"),
 });
 
-const LoginForm = () => {
-  const navigate = useNavigate();
-
+const SignupForm = () => {
   const box = {
     margin: "0 auto",
     padding: "20px 0",
@@ -41,21 +37,13 @@ const LoginForm = () => {
     borderRadius: "6px",
   };
 
-  const info = {
-    padding: "15px 20px",
-    border: "1px solid rgb(208, 215, 222)",
-    borderRadius: "6px",
-  };
-
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validationSchema: LoginSchema,
+    validationSchema: SignupSchema,
     onSubmit: (values) => {
-      user.setUser();
-      navigate("/private");
       formik.resetForm();
     },
   });
@@ -63,7 +51,7 @@ const LoginForm = () => {
   return (
     <Box sx={box}>
       <Typography variant="h6" component="h1" sx={title}>
-        Sign in
+        Sign up
       </Typography>
       <Typography sx={form} component="form" onSubmit={formik.handleSubmit}>
         <TextField
@@ -94,14 +82,8 @@ const LoginForm = () => {
           Login
         </Button>
       </Typography>
-      <Box sx={info}>
-        <Typography variant="body2" component="p">
-          Don't have an account yet?{" "}
-          <Link to="/signup">Create an account.</Link>
-        </Typography>
-      </Box>
     </Box>
   );
 };
 
-export default LoginForm;
+export default SignupForm;

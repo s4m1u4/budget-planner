@@ -6,6 +6,8 @@ import Wrapper from "./components/wrapper/Wrapper";
 import LoginPage from "./views/Login/LoginPage/LoginPage";
 import PrivatePage from "./views/Private/PrivatePage/PrivatePage";
 import PrivateRoute from "./components/routing/PrivateRoute/PrivateRoute";
+import SignupPage from "./views/Signup/SignupPage/SignupPage";
+import { Error } from "@mui/icons-material";
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
             exact
           />
           <Route path="/login" element={<LoginPage />} exact />
+          <Route path="/signup" element={<SignupPage />} exact />
         </Routes>
       </BrowserRouter>
     </Wrapper>
