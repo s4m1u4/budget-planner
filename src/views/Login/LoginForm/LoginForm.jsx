@@ -1,9 +1,9 @@
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
 import user from "../../../store/User";
+import { Link, useNavigate } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const LoginSchema = yup.object({
   email: yup
@@ -54,7 +54,9 @@ const LoginForm = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
+      console.log(values);
       user.setUser();
+      localStorage.setItem("login", "true");
       navigate("/private");
       formik.resetForm();
     },
@@ -65,7 +67,7 @@ const LoginForm = () => {
       <Typography variant="h6" component="h1" sx={title}>
         Sign in
       </Typography>
-      <Typography sx={form} component="form" onSubmit={formik.handleSubmit}>
+      <Box sx={form} component="form" onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
           name="email"
@@ -91,13 +93,12 @@ const LoginForm = () => {
           helperText={formik.touched.password && formik.errors.password}
         />
         <Button variant="contained" color="success" type="submit">
-          Login
+          Sign in
         </Button>
-      </Typography>
+      </Box>
       <Box sx={info}>
         <Typography variant="body2" component="p">
-          Don't have an account yet?{" "}
-          <Link to="/signup">Create an account.</Link>
+          Don't have an account yet? <Link to="/signup">Create an account</Link>
         </Typography>
       </Box>
     </Box>

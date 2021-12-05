@@ -7,7 +7,6 @@ import LoginPage from "./views/Login/LoginPage/LoginPage";
 import PrivatePage from "./views/Private/PrivatePage/PrivatePage";
 import PrivateRoute from "./components/routing/PrivateRoute/PrivateRoute";
 import SignupPage from "./views/Signup/SignupPage/SignupPage";
-import { Error } from "@mui/icons-material";
 
 const App = () => {
   return (

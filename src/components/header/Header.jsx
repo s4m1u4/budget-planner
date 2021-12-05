@@ -1,15 +1,25 @@
 import React from "react";
-import { AppBar, Box, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
+import { AppBar, Box, Button, Toolbar } from "@mui/material";
 
 const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={{ display: "flex", columnGap: "10px" }}>
-          <Link to="/">Home</Link>
-          <Link to="/private">Private</Link>
-          <Link to="/login">Login</Link>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Box>
+            <Button color="inherit" component={Link} to="/">
+              Home
+            </Button>
+            <Button color="inherit" component={Link} to="/private">
+              Private
+            </Button>
+          </Box>
+          <Box>
+            <Button color="inherit" component={Link} to="/login">
+              Login
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
