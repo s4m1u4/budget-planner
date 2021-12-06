@@ -10,10 +10,9 @@ class User {
 
   setSignupData(data) {
     this.signupData = data;
-    console.log("Data:", this.signupData);
   }
 
-  setUser() {
+  setLogin() {
     this.login = true;
   }
 }

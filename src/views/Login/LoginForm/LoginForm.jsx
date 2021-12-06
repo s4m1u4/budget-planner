@@ -54,9 +54,7 @@ const LoginForm = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      console.log(values);
-      user.setUser();
-      localStorage.setItem("login", "true");
+      user.setLogin();
       navigate("/private");
       formik.resetForm();
     },
