@@ -1,14 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, Container } from "@mui/material";
+import { box } from "./PrivatePage.styles";
 
-const PrivatePage = () => {
-  const box = {
-    height: "90vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
+const PrivatePage: FC = () => {
   return (
     <Container>
       <Box sx={box}>

@@ -1,51 +1,13 @@
-import React from "react";
-import * as yup from "yup";
+import React, { FC } from "react";
 import { useFormik } from "formik";
 import user from "../../../store/User";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { LoginSchema } from "./LoginForm.schema";
+import { box, form, info, title } from "./LoginForm.styles";
 
-const LoginSchema = yup.object({
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
-});
-
-const LoginForm = () => {
+const LoginForm: FC = () => {
   const navigate = useNavigate();
-
-  const box = {
-    margin: "0 auto",
-    padding: "20px 0",
-    width: "100%",
-    maxWidth: "400px",
-  };
-
-  const title = {
-    textAlign: "center",
-    margin: "0 0 10px 0",
-  };
-
-  const form = {
-    display: "flex",
-    flexDirection: "column",
-    rowGap: "15px",
-    margin: "0 0 15px 0",
-    padding: "20px",
-    border: "1px solid rgb(208, 215, 222)",
-    borderRadius: "6px",
-  };
-
-  const info = {
-    padding: "15px 20px",
-    border: "1px solid rgb(208, 215, 222)",
-    borderRadius: "6px",
-  };
 
   const formik = useFormik({
     initialValues: {
@@ -54,7 +16,7 @@ const LoginForm = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      user.setLogin();
+      user.setIsAuth();
       navigate("/private");
       formik.resetForm();
     },

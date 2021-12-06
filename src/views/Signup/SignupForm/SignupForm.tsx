@@ -1,59 +1,12 @@
 import React from "react";
-import * as yup from "yup";
 import { useFormik } from "formik";
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import user from "../../../store/User";
-
-const SignupSchema = yup.object({
-  firstName: yup
-    .string("Enter your first name")
-    .matches(/^[A-z]{2,15}$/, "Enter a valid first name")
-    .required("First name is required"),
-  lastName: yup
-    .string("Enter your last name")
-    .matches(/^[A-z]{2,15}$/, "Enter a valid last name")
-    .required("Last name is required"),
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
-  role: yup.string("Select your role").required("Role is required"),
-});
+import { SignupSchema } from "./SignupForm.schema";
+import { box, form, info, title } from "./SignupForm.styles";
 
 const SignupForm = () => {
-  const box = {
-    margin: "0 auto",
-    padding: "20px 0",
-    width: "100%",
-    maxWidth: "400px",
-  };
-
-  const title = {
-    textAlign: "center",
-    margin: "0 0 10px 0",
-  };
-
-  const form = {
-    display: "flex",
-    flexDirection: "column",
-    rowGap: "15px",
-    margin: "0 0 15px 0",
-    padding: "20px",
-    border: "1px solid rgb(208, 215, 222)",
-    borderRadius: "6px",
-  };
-
-  const info = {
-    padding: "15px 20px",
-    border: "1px solid rgb(208, 215, 222)",
-    borderRadius: "6px",
-  };
-
   const formik = useFormik({
     initialValues: {
       firstName: "",

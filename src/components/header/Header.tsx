@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

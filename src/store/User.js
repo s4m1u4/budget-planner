@@ -1,19 +1,19 @@
 import { makeAutoObservable } from "mobx";
 
 class User {
-  login = false;
-  signupData = {};
+  isAuth = false;
+  userData = {};
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setSignupData(data) {
-    this.signupData = data;
+  setIsAuth() {
+    this.isAuth = true;
   }
 
-  setLogin() {
-    this.login = true;
+  setSignupData(data) {
+    this.userData = data;
   }
 }
 

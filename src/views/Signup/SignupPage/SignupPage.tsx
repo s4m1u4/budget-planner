@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import SignupForm from "../SignupForm/SignupForm";
 import { Container } from "@mui/material";
 
-const SignupPage = () => {
+const SignupPage: FC = () => {
   return (
     <Container>
       <SignupForm />

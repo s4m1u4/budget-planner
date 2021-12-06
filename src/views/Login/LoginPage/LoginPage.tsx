@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Container } from "@mui/material";
 import LoginForm from "../LoginForm/LoginForm";
 
-const LoginPage = () => {
+const LoginPage: FC = () => {
   return (
     <Container>
       <LoginForm />
