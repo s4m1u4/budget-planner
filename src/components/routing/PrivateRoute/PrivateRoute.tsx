@@ -1,11 +1,14 @@
 import React, { FC, Fragment } from "react";
-import user from "../../../store/User";
 import { Navigate } from "react-router-dom";
+import { observer } from "mobx-react";
+import userStore from "../../../store/UserStore";
 
-const PrivateRoute: FC = ({ children }) => {
+const PrivateRoute: FC = observer(({ children }) => {
   return (
-    <Fragment>{user.isAuth ? children : <Navigate to="/login" />}</Fragment>
+    <Fragment>
+      {userStore.isAuth ? children : <Navigate to="/login" />}
+    </Fragment>
   );
-};
+});
 
 export default PrivateRoute;

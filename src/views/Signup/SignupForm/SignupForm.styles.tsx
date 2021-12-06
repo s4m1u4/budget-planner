@@ -2,7 +2,6 @@ import { SxProps } from "@mui/material";
 
 export const box: SxProps = {
   margin: "0 auto",
-  padding: "20px 0",
   width: "100%",
   maxWidth: "400px",
 };

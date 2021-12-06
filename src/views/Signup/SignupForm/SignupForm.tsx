@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import user from "../../../store/User";
+// import user from "../../../store/UserStore";
 import { SignupSchema } from "./SignupForm.schema";
 import { box, form, info, title } from "./SignupForm.styles";
 
@@ -17,7 +17,7 @@ const SignupForm = () => {
     },
     validationSchema: SignupSchema,
     onSubmit: (values) => {
-      user.setSignupData(values);
+      // user.setSignupData(values);
       formik.resetForm();
     },
   });

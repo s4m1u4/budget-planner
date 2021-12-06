@@ -1,14 +1,12 @@
 import React, { FC } from "react";
 import { useFormik } from "formik";
-import user from "../../../store/User";
-import { Link, useNavigate } from "react-router-dom";
+import userStore from "../../../store/UserStore";
+import { Link } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { LoginSchema } from "./LoginForm.schema";
 import { box, form, info, title } from "./LoginForm.styles";
 
 const LoginForm: FC = () => {
-  const navigate = useNavigate();
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -16,8 +14,7 @@ const LoginForm: FC = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      user.setIsAuth();
-      navigate("/private");
+      userStore.setIsAuth();
       formik.resetForm();
     },
   });

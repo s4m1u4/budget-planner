@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./views/Home/HomePage/HomePage";
 import Wrapper from "./components/wrapper/Wrapper";
 import Header from "./components/header/Header";
-import LoginPage from "./views/Login/LoginPage/LoginPage";
-import PrivatePage from "./views/Private/PrivatePage/PrivatePage";
+import HomePage from "./views/Home";
+import LoginPage from "./views/Login";
+import SignupPage from "./views/Signup";
+import ProfilePage from "./views/Profile";
+import NotFoundPage from "./views/NotFound";
 import PrivateRoute from "./components/routing/PrivateRoute/PrivateRoute";
-import SignupPage from "./views/Signup/SignupPage/SignupPage";
-import NotFoundPage from "./views/NotFound/NotFoundPage/NotFoundPage";
 
 const App: FC = () => {
   return (
@@ -20,10 +20,10 @@ const App: FC = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route
-            path="/private"
+            path="/profile"
             element={
               <PrivateRoute>
-                <PrivatePage />
+                <ProfilePage />
               </PrivateRoute>
             }
           />

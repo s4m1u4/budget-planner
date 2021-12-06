@@ -1,11 +1,14 @@
 import React, { FC } from "react";
 import SignupForm from "../SignupForm/SignupForm";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import { box } from "./SignupPage.styles";
 
 const SignupPage: FC = () => {
   return (
     <Container>
-      <SignupForm />
+      <Box sx={box}>
+        <SignupForm />
+      </Box>
     </Container>
   );
 };

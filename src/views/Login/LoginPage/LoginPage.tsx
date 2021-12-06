@@ -1,11 +1,14 @@
 import React, { FC } from "react";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import LoginForm from "../LoginForm/LoginForm";
+import { box } from "./LoginPage.styles";
 
 const LoginPage: FC = () => {
   return (
     <Container>
-      <LoginForm />
+      <Box sx={box}>
+        <LoginForm />
+      </Box>
     </Container>
   );
 };

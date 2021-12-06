@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { Box, Container, Typography } from "@mui/material";
 import { box } from "./HomePage.styles";
+import { Box, Container, Typography } from "@mui/material";
 
 const HomePage: FC = () => {
   return (
