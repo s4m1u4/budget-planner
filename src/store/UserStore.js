@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class UserStore {
+export default class UserStore {
   isAuth = false;
   userData = {};
 
@@ -8,15 +8,11 @@ class UserStore {
     makeAutoObservable(this);
   }
 
-  setIsAuth() {
+  setIsAuth = () => {
     this.isAuth = true;
-  }
+  };
 
-  setSignupData(data) {
+  setUserData = (data) => {
     this.userData = data;
-  }
+  };
 }
-
-const userStore = new UserStore();
-
-export default userStore;

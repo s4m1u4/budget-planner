@@ -1,3 +1,5 @@
 import UserStore from "./UserStore";
 
-export default class RootStore {}
+export default class RootStore {
+  userStore = new UserStore();
+}
