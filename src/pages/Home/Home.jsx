@@ -1,8 +1,8 @@
 import React from "react";
-import { box } from "./HomePage.styles";
+import { box } from "./Home.styles";
 import { Box, Container, Typography } from "@mui/material";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -14,4 +14,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

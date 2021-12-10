@@ -4,9 +4,9 @@ import SignupForm from "./SignupForm";
 const SignupFormContainer = inject(
   ({
     rootStore: {
-      userStore: { setUserData },
+      userStore: { userRegistration },
     },
-  }) => ({ setUserData })
+  }) => ({ userRegistration })
 )(observer(SignupForm));
 
 export default SignupFormContainer;

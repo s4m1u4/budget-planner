@@ -1,12 +1,11 @@
-export const box = {
-  margin: "0 auto",
-  width: "100%",
-  maxWidth: "400px",
-};
-
 export const title = {
   textAlign: "center",
   margin: "0 0 10px 0",
+};
+
+export const boxForm = {
+  width: "100%",
+  maxWidth: "400px",
 };
 
 export const form = {
@@ -19,7 +18,7 @@ export const form = {
   borderRadius: "6px",
 };
 
-export const info = {
+export const boxInfo = {
   padding: "15px 20px",
   border: "1px solid rgb(208, 215, 222)",
   borderRadius: "6px",

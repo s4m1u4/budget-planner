@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { box } from "./NotFoundPage.styles";
-import pageNotFound from "../../../assets/images/page-not-found.png";
+import { box } from "./NotFound.styles";
+import pageNotFound from "../../assets/images/page-not-found.png";
 import { Box, Button, Container, Typography } from "@mui/material";
 
-const NotFoundPage = () => {
+const NotFound = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -20,4 +20,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default NotFound;

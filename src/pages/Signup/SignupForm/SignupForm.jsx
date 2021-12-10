@@ -1,28 +1,30 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { SignupSchema } from "./SignupForm.schema";
-import { box, form, info, title } from "./SignupForm.styles";
+import { boxForm, boxInfo, form, title } from "./SignupForm.styles";
 
-const SignupForm = ({ setUserData }) => {
+const SignupForm = ({ userRegistration }) => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
-      role: "",
     },
     validationSchema: SignupSchema,
     onSubmit: (values) => {
-      setUserData(values);
+      userRegistration(values);
+      navigate("/login");
       formik.resetForm();
     },
   });
 
   return (
-    <Box sx={box}>
+    <Box sx={boxForm}>
       <Typography variant="h6" component="h1" sx={title}>
         Sign up
       </Typography>
@@ -75,26 +77,26 @@ const SignupForm = ({ setUserData }) => {
           error={formik.touched.password && !!formik.errors.password}
           helperText={formik.touched.password && formik.errors.password}
         />
-        <TextField
-          select
-          fullWidth
-          name="role"
-          size="small"
-          label="Role"
-          value={formik.values.role}
-          onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
-          error={formik.touched.role && !!formik.errors.role}
-          helperText={formik.touched.role && formik.errors.role}
-        >
-          <MenuItem value="user">User</MenuItem>
-          <MenuItem value="admin">Admin</MenuItem>
-        </TextField>
+        {/*<TextField*/}
+        {/*  select*/}
+        {/*  fullWidth*/}
+        {/*  name="role"*/}
+        {/*  size="small"*/}
+        {/*  label="Role"*/}
+        {/*  value={formik.values.role}*/}
+        {/*  onBlur={formik.handleBlur}*/}
+        {/*  onChange={formik.handleChange}*/}
+        {/*  error={formik.touched.role && !!formik.errors.role}*/}
+        {/*  helperText={formik.touched.role && formik.errors.role}*/}
+        {/*>*/}
+        {/*  <MenuItem value="user">User</MenuItem>*/}
+        {/*  <MenuItem value="admin">Admin</MenuItem>*/}
+        {/*</TextField>*/}
         <Button variant="contained" color="success" type="submit">
           Sign up
         </Button>
       </Box>
-      <Box sx={info}>
+      <Box sx={boxInfo}>
         <Typography variant="body2" component="p">
           Already have an account? <Link to="/login">Sign in</Link>
         </Typography>
