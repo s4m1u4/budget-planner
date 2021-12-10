@@ -4,9 +4,9 @@ import LoginForm from "./LoginForm";
 const LoginFormContainer = inject(
   ({
     rootStore: {
-      userStore: { setIsAuth },
+      userStore: { userAuthentication },
     },
-  }) => ({ setIsAuth })
+  }) => ({ userAuthentication })
 )(observer(LoginForm));
 
 export default LoginFormContainer;

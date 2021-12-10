@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
-import { box } from "./LoginPage.styles";
-import LoginFormContainer from "../LoginForm/LoginForm.container";
+import { box } from "./Login.styles";
+import LoginFormContainer from "./components/LoginForm/LoginForm.container";
 
-const LoginPage = () => {
+const Login = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -13,4 +13,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

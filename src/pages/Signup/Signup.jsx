@@ -1,9 +1,9 @@
 import React from "react";
-import { box } from "./SignupPage.styles";
+import { box } from "./Signup.styles";
 import { Box, Container } from "@mui/material";
-import SignupFormContainer from "../SignupForm/SignupForm.container";
+import SignupFormContainer from "./SignupForm/SignupForm.container";
 
-const SignupPage = () => {
+const Signup = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -13,4 +13,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Signup;

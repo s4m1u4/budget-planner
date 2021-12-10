@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Wrapper } from "./components/wrapper";
-import { Header } from "./components/header";
+import { HeaderContainer, Progress } from "./components";
 import { RoutesList } from "./routes";
+import { inject, observer } from "mobx-react";
 
-const App = () => {
+const App = ({ isAuth, getUserData }) => {
+  useEffect(() => {
+    getUserData();
+  }, [getUserData]);
+
   return (
-    <Wrapper>
-      <BrowserRouter>
-        <Header />
-        <RoutesList />
-      </BrowserRouter>
-    </Wrapper>
+    <BrowserRouter>
+      {isAuth ? <HeaderContainer /> : null}
+      <RoutesList />
+    </BrowserRouter>
   );
 };
 
-export default App;
+export default inject(
+  ({
+    rootStore: {
+      userStore: { isAuth, getUserData },
+    },
+  }) => ({ isAuth, getUserData })
+)(observer(App));

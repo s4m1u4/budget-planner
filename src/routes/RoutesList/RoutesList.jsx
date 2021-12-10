@@ -1,24 +1,34 @@
 import React from "react";
 import { routes } from "../routes";
-import { Routes, Route } from "react-router-dom";
-import PrivateRouteContainer from "../PrivateRoute/PrivateRoute.container";
+import { Route, Routes } from "react-router-dom";
+import { PrivateRoute, PublicRoute } from "../index";
 
 const RoutesList = () => {
   return (
     <Routes>
-      {routes.map((route, index) =>
-        route.isPrivate ? (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <PrivateRouteContainer>{route.element}</PrivateRouteContainer>
-            }
-          />
-        ) : (
-          <Route key={index} path={route.path} element={route.element} />
-        )
-      )}
+      {routes.map((route, index) => {
+        if (route.isPrivate) {
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={<PrivateRoute>{route.element}</PrivateRoute>}
+            />
+          );
+        }
+
+        if (route.isRestricted) {
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={<PublicRoute>{route.element}</PublicRoute>}
+            />
+          );
+        }
+
+        return <Route key={index} path={route.path} element={route.element} />;
+      })}
     </Routes>
   );
 };

@@ -1,11 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { LoginSchema } from "./LoginForm.schema";
-import { box, form, info, title } from "./LoginForm.styles";
+import { boxForm, boxInfo, form, title } from "./LoginForm.styles";
 
-const LoginForm = ({ setIsAuth }) => {
+const LoginForm = ({ userAuthentication }) => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -13,13 +15,14 @@ const LoginForm = ({ setIsAuth }) => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      setIsAuth();
+      userAuthentication(values);
+      navigate("/");
       formik.resetForm();
     },
   });
 
   return (
-    <Box sx={box}>
+    <Box sx={boxForm}>
       <Typography variant="h6" component="h1" sx={title}>
         Sign in
       </Typography>
@@ -52,7 +55,7 @@ const LoginForm = ({ setIsAuth }) => {
           Sign in
         </Button>
       </Box>
-      <Box sx={info}>
+      <Box sx={boxInfo}>
         <Typography variant="body2" component="p">
           Don't have an account yet? <Link to="/signup">Create an account</Link>
         </Typography>

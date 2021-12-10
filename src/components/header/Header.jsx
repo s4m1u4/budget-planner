@@ -11,8 +11,11 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { clearToken } from "../../helpers";
 
-const Header = () => {
+const Header = ({ userData, setIsAuth }) => {
+  const { firstName, lastName } = userData;
+
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -23,6 +26,12 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  const handlerSignOut = () => {
+    setAnchorElUser(null);
+    clearToken();
+    setIsAuth();
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -31,13 +40,18 @@ const Header = () => {
             <Button color="inherit" component={Link} to="/">
               Home
             </Button>
-            <Button color="inherit" component={Link} to="/login">
-              Login
-            </Button>
           </Box>
-          <Box>
+          <Box
+            sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}
+          >
+            <Typography variant="body1" component="p">
+              {firstName ? firstName : ""} {lastName ? lastName : ""}
+            </Typography>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="" src="/404.jpg" />
+              <Avatar
+                alt="Oleg"
+                src="https://img.tsn.ua/cached/323/tsn-ed71814124f95cefb3093cdb7dd2dd14/thumbs/428x268/56/47/8dc4041741a13232fff9ce5a76e64756.jpeg"
+              />
             </IconButton>
             <Menu
               sx={{ mt: "45px" }}
@@ -59,16 +73,10 @@ const Header = () => {
                 to="/profile"
                 onClick={handleCloseUserMenu}
               >
-                <Typography textAlign="center">Profile</Typography>
+                <Typography>Profile</Typography>
               </MenuItem>
-              <MenuItem component={Link} to="/" onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Account</Typography>
-              </MenuItem>
-              <MenuItem component={Link} to="/" onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Dashboard</Typography>
-              </MenuItem>
-              <MenuItem component={Link} to="/" onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Logout</Typography>
+              <MenuItem component={Link} to="/" onClick={handlerSignOut}>
+                <Typography>Sign out</Typography>
               </MenuItem>
             </Menu>
           </Box>

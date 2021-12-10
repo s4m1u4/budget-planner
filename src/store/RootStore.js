@@ -1,7 +1,7 @@
-import API from "../services/API";
+import { API } from "../services";
 import UserStore from "./UserStore";
 
 export default class RootStore {
-  API = new API();
-  userStore = new UserStore();
+  api = new API();
+  userStore = new UserStore(this.api);
 }

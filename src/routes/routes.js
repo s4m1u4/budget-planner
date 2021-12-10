@@ -1,13 +1,10 @@
-import HomePage from "../pages/Home";
-import LoginPage from "../pages/Login";
-import SignupPage from "../pages/Signup";
-import NotFoundPage from "../pages/NotFound";
-import ProfilePage from "../pages/Profile";
+import { Home, Login, NotFound, Signup } from "../pages";
+import ProfileContainer from "../pages/Profile/Profile.container";
 
 export const routes = [
-  { path: "/", element: <HomePage /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signup", element: <SignupPage /> },
-  { path: "*", element: <NotFoundPage /> },
-  { path: "/profile", element: <ProfilePage />, isPrivate: true },
+  { path: "/", element: <Home />, isPrivate: true },
+  { path: "/login", element: <Login />, isRestricted: true },
+  { path: "/signup", element: <Signup />, isRestricted: true },
+  { path: "/profile", element: <ProfileContainer />, isPrivate: true },
+  { path: "*", element: <NotFound /> },
 ];
