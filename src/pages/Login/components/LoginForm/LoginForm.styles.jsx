@@ -1,6 +1,5 @@
 export const title = {
   textAlign: "center",
-  margin: "0 0 10px 0",
 };
 
 export const boxForm = {
@@ -12,7 +11,7 @@ export const form = {
   display: "flex",
   flexDirection: "column",
   rowGap: "15px",
-  margin: "0 0 15px 0",
+  margin: "15px 0",
   padding: "20px",
   border: "1px solid rgb(208, 215, 222)",
   borderRadius: "6px",
