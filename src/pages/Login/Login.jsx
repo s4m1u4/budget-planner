@@ -1,16 +1,19 @@
 import React from "react";
-import { Box, Container } from "@mui/material";
-import { box } from "./Login.styles";
-import LoginFormContainer from "./components/LoginForm/LoginForm.container";
+import { LoginForm } from "./components";
+import { Box, CircularProgress, Container } from "@mui/material";
 
-const Login = () => {
+import { box } from "./Login.styles";
+
+export const Login = ({ userAuthentication, isLoading }) => {
   return (
     <Container>
       <Box sx={box}>
-        <LoginFormContainer />
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <LoginForm userAuthentication={userAuthentication} />
+        )}
       </Box>
     </Container>
   );
 };
-
-export default Login;

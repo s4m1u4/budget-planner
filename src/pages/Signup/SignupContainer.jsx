@@ -1,12 +1,10 @@
+import { Signup } from "./Signup";
 import { inject, observer } from "mobx-react";
-import SignupForm from "./SignupForm";
 
-const SignupFormContainer = inject(
+export const SignupContainer = inject(
   ({
     rootStore: {
       userStore: { userRegistration },
     },
   }) => ({ userRegistration })
-)(observer(SignupForm));
-
-export default SignupFormContainer;
+)(observer(Signup));

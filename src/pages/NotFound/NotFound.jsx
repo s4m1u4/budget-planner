@@ -4,7 +4,7 @@ import { box } from "./NotFound.styles";
 import pageNotFound from "../../assets/images/page-not-found.png";
 import { Box, Button, Container, Typography } from "@mui/material";
 
-const NotFound = () => {
+export const NotFound = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -19,5 +19,3 @@ const NotFound = () => {
     </Container>
   );
 };
-
-export default NotFound;

@@ -1,16 +1,15 @@
 import React from "react";
-import { box } from "./Signup.styles";
 import { Box, Container } from "@mui/material";
-import SignupFormContainer from "./SignupForm/SignupForm.container";
+import { SignupForm } from "./components";
 
-const Signup = () => {
+import { box } from "./Signup.styles";
+
+export const Signup = ({ userRegistration }) => {
   return (
     <Container>
       <Box sx={box}>
-        <SignupFormContainer />
+        <SignupForm userRegistration={userRegistration} />
       </Box>
     </Container>
   );
 };
-
-export default Signup;

@@ -1,22 +1,63 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
-import { box } from "./Profile.styles";
+import { CircularProgress, Container } from "@mui/material";
+import { Avatar, ProgressBox, Title, Wrapper } from "./Profile.styles";
+import { ProfileForm } from "./components/ProfileForm/ProfileForm";
+import { withRouter } from "../../hooks";
+import { ProfileData } from "./components/ProfileData/ProfileData";
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userData: {},
+      isLoading: false,
+    };
+  }
+
+  componentDidMount = () => {
+    this.setUserData();
+  };
+
+  setUserData = async () => {
+    this.setState({ isLoading: true });
+    const userData = await this.props.getUserData();
+    this.setState({ userData });
+    this.setState({ isLoading: false });
+  };
+
   render() {
     return (
       <Container>
-        <Box sx={box}>
-          <Typography variant="h4" component="h1">
-            Profile page
-          </Typography>
-          <p>{this.props.userData.firstName}</p>
-          <p>{this.props.userData.lastName}</p>
-          <p>{this.props.userData.email}</p>
-        </Box>
+        <Wrapper>
+          <Title>Profile page</Title>
+          <Avatar />
+          {this.props.params.editMode ? (
+            this.state.isLoading ? (
+              <ProgressBox>
+                <CircularProgress />
+              </ProgressBox>
+            ) : (
+              <ProfileForm
+                navigate={this.props.navigate}
+                userData={this.state.userData}
+                setUserData={this.setUserData}
+                setNewUserData={this.props.setNewUserData}
+              />
+            )
+          ) : this.state.isLoading ? (
+            <ProgressBox>
+              <CircularProgress />
+            </ProgressBox>
+          ) : (
+            <ProfileData
+              navigate={this.props.navigate}
+              userData={this.state.userData}
+            />
+          )}
+        </Wrapper>
       </Container>
     );
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

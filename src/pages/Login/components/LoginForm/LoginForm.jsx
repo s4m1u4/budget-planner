@@ -2,10 +2,11 @@ import React from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { LoginSchema } from "./LoginForm.schema";
+import { LoginFormSchema } from "./LoginFormSchema";
+
 import { boxForm, boxInfo, form, title } from "./LoginForm.styles";
 
-const LoginForm = ({ userAuthentication }) => {
+export const LoginForm = ({ userAuthentication }) => {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -13,9 +14,9 @@ const LoginForm = ({ userAuthentication }) => {
       email: "",
       password: "",
     },
-    validationSchema: LoginSchema,
-    onSubmit: (values) => {
-      userAuthentication(values);
+    validationSchema: LoginFormSchema,
+    onSubmit: async (values) => {
+      await userAuthentication(values);
       navigate("/");
       formik.resetForm();
     },
@@ -63,5 +64,3 @@ const LoginForm = ({ userAuthentication }) => {
     </Box>
   );
 };
-
-export default LoginForm;

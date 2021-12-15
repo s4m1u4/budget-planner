@@ -1,9 +1,10 @@
 import React from "react";
 import { routes } from "../routes";
 import { Route, Routes } from "react-router-dom";
-import { PrivateRoute, PublicRoute } from "../index";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
+import { PublicRoute } from "../PublicRoute/PublicRoute";
 
-const RoutesList = () => {
+export const RoutesList = () => {
   return (
     <Routes>
       {routes.map((route, index) => {
@@ -32,5 +33,3 @@ const RoutesList = () => {
     </Routes>
   );
 };
-
-export default RoutesList;
