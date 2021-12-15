@@ -34,7 +34,7 @@ export class UserStore {
       });
       this.setIsAuth();
     } catch (error) {
-      console.error(error);
+      return error.response.data.details;
     } finally {
       this.setIsLoading();
     }
@@ -52,7 +52,7 @@ export class UserStore {
       setToken(token);
       this.setIsAuth();
     } catch (error) {
-      console.error(error);
+      return error.response.data.details;
     } finally {
       this.setIsLoading();
     }

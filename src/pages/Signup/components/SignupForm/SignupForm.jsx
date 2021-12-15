@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { SignupFormSchema } from "./SignupFormSchema";
 import { boxForm, boxInfo, form, title } from "./SignupForm.styles";
 
 export const SignupForm = ({ userRegistration }) => {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -16,12 +17,18 @@ export const SignupForm = ({ userRegistration }) => {
       password: "",
     },
     validationSchema: SignupFormSchema,
-    onSubmit: (values) => {
-      userRegistration(values);
-      navigate("/login");
-      formik.resetForm();
+    onSubmit: async (values) => {
+      const response = await userRegistration(values);
+      setErrorMessage(response);
+      !response && navigate("/login");
+      !response && formik.resetForm();
     },
   });
+
+  const formikHandleChange = (event) => {
+    formik.handleChange(event);
+    setErrorMessage("");
+  };
 
   return (
     <Box sx={boxForm}>
@@ -37,7 +44,7 @@ export const SignupForm = ({ userRegistration }) => {
           label="First name"
           value={formik.values.firstName}
           onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
+          onChange={formikHandleChange}
           error={formik.touched.firstName && !!formik.errors.firstName}
           helperText={formik.touched.firstName && formik.errors.firstName}
         />
@@ -49,7 +56,7 @@ export const SignupForm = ({ userRegistration }) => {
           label="Last name"
           value={formik.values.lastName}
           onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
+          onChange={formikHandleChange}
           error={formik.touched.lastName && !!formik.errors.lastName}
           helperText={formik.touched.lastName && formik.errors.lastName}
         />
@@ -61,7 +68,7 @@ export const SignupForm = ({ userRegistration }) => {
           label="Email"
           value={formik.values.email}
           onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
+          onChange={formikHandleChange}
           error={formik.touched.email && !!formik.errors.email}
           helperText={formik.touched.email && formik.errors.email}
         />
@@ -73,7 +80,7 @@ export const SignupForm = ({ userRegistration }) => {
           label="Password"
           value={formik.values.password}
           onBlur={formik.handleBlur}
-          onChange={formik.handleChange}
+          onChange={formikHandleChange}
           error={formik.touched.password && !!formik.errors.password}
           helperText={formik.touched.password && formik.errors.password}
         />
@@ -81,6 +88,11 @@ export const SignupForm = ({ userRegistration }) => {
           Sign up
         </Button>
       </Box>
+      {errorMessage && (
+        <Alert variant="filled" severity="error" sx={{ marginBottom: "15px" }}>
+          {errorMessage}
+        </Alert>
+      )}
       <Box sx={boxInfo}>
         <Typography variant="body2" component="p">
           Already have an account? <Link to="/login">Sign in</Link>
