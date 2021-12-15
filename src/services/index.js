@@ -1,3 +1,1 @@
-import { API } from "./API.service";
-
-export { API };
+export { API } from "./API.service";

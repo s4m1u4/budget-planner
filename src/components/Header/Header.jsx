@@ -13,21 +13,21 @@ import {
 } from "@mui/material";
 import { clearToken } from "../../helpers";
 
-const Header = ({ userData, setIsAuth }) => {
-  const { firstName, lastName } = userData;
+export const Header = ({ userData, setIsAuth }) => {
+  const { firstName, lastName, avatar } = userData;
 
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(null);
 
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setIsUserMenuOpen(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setIsUserMenuOpen(null);
   };
 
   const handlerSignOut = () => {
-    setAnchorElUser(null);
+    setIsUserMenuOpen(null);
     clearToken();
     setIsAuth();
   };
@@ -45,17 +45,21 @@ const Header = ({ userData, setIsAuth }) => {
             sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}
           >
             <Typography variant="body1" component="p">
-              {firstName ? firstName : ""} {lastName ? lastName : ""}
+              {firstName && firstName} {lastName && lastName}
             </Typography>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar
-                alt="Oleg"
-                src="https://img.tsn.ua/cached/323/tsn-ed71814124f95cefb3093cdb7dd2dd14/thumbs/428x268/56/47/8dc4041741a13232fff9ce5a76e64756.jpeg"
+                alt={firstName && firstName}
+                src={
+                  avatar
+                    ? null
+                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEDRhK8UmJi2f3KBGti-__WjKErf1ahArGg&usqp=CAU"
+                }
               />
             </IconButton>
             <Menu
               sx={{ mt: "45px" }}
-              anchorEl={anchorElUser}
+              anchorEl={isUserMenuOpen}
               anchorOrigin={{
                 vertical: "top",
                 horizontal: "right",
@@ -65,7 +69,7 @@ const Header = ({ userData, setIsAuth }) => {
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={Boolean(anchorElUser)}
+              open={Boolean(isUserMenuOpen)}
               onClose={handleCloseUserMenu}
             >
               <MenuItem
@@ -85,5 +89,3 @@ const Header = ({ userData, setIsAuth }) => {
     </Box>
   );
 };
-
-export default Header;

@@ -1,12 +1,10 @@
-import { Header } from "../index";
+import { Header } from "./Header";
 import { inject, observer } from "mobx-react";
 
-const HeaderContainer = inject(
+export const HeaderContainer = inject(
   ({
     rootStore: {
       userStore: { userData, setIsAuth },
     },
   }) => ({ userData, setIsAuth })
 )(observer(Header));
-
-export default HeaderContainer;

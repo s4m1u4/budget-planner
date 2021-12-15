@@ -1,9 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import { getToken, isAuth, setToken } from "../helpers";
 
-export default class UserStore {
+export class UserStore {
   userData = {};
   isAuth = isAuth();
+  isLoading = false;
 
   constructor(api) {
     makeAutoObservable(this);
@@ -18,40 +19,72 @@ export default class UserStore {
     this.isAuth = isAuth();
   };
 
-  userAuthentication = async (userDataset) => {
-    try {
-      const { user, token } = await this.api.fetchRequest({
-        url: "/user/login",
-        method: "post",
-        body: userDataset,
-        token: null,
-      });
-      setToken(token);
-      await this.getUserData();
-      this.setIsAuth();
-      return { user };
-    } catch (error) {
-      console.error(error.response.data.details);
-    }
+  setIsLoading = () => {
+    this.isLoading = !this.isLoading;
   };
 
   userRegistration = async (userDataset) => {
     try {
-      const user = await this.api.fetchRequest({
+      this.setIsLoading();
+      await this.api.fetchRequest({
         url: "/user/register",
         method: "post",
         body: userDataset,
         token: null,
       });
       this.setIsAuth();
-      return user;
     } catch (error) {
-      console.error(error.response.data.details);
+      console.error(error);
+    } finally {
+      this.setIsLoading();
+    }
+  };
+
+  userAuthentication = async (userDataset) => {
+    try {
+      this.setIsLoading();
+      const { token } = await this.api.fetchRequest({
+        url: "/user/login",
+        method: "post",
+        body: userDataset,
+        token: null,
+      });
+      setToken(token);
+      this.setIsAuth();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.setIsLoading();
+    }
+  };
+
+  setNewUserData = async (userDataset) => {
+    try {
+      this.setIsLoading();
+      await this.api.fetchRequest({
+        url: "/user",
+        method: "patch",
+        body: userDataset,
+        token: getToken(),
+      });
+      const userData = await this.api.fetchRequest({
+        url: "/user",
+        method: "get",
+        body: null,
+        token: getToken(),
+      });
+      this.setUserData(userData);
+      this.setIsAuth();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      this.setIsLoading();
     }
   };
 
   getUserData = async () => {
     try {
+      this.setIsLoading();
       const userData = await this.api.fetchRequest({
         url: "/user",
         method: "get",
@@ -62,7 +95,9 @@ export default class UserStore {
       this.setIsAuth();
       return userData;
     } catch (error) {
-      console.error(error.response.data.details);
+      console.error(error);
+    } finally {
+      this.setIsLoading();
     }
   };
 }

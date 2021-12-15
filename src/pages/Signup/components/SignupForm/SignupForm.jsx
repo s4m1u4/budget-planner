@@ -2,10 +2,10 @@ import React from "react";
 import { useFormik } from "formik";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { SignupSchema } from "./SignupForm.schema";
+import { SignupFormSchema } from "./SignupFormSchema";
 import { boxForm, boxInfo, form, title } from "./SignupForm.styles";
 
-const SignupForm = ({ userRegistration }) => {
+export const SignupForm = ({ userRegistration }) => {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -15,7 +15,7 @@ const SignupForm = ({ userRegistration }) => {
       email: "",
       password: "",
     },
-    validationSchema: SignupSchema,
+    validationSchema: SignupFormSchema,
     onSubmit: (values) => {
       userRegistration(values);
       navigate("/login");
@@ -77,21 +77,6 @@ const SignupForm = ({ userRegistration }) => {
           error={formik.touched.password && !!formik.errors.password}
           helperText={formik.touched.password && formik.errors.password}
         />
-        {/*<TextField*/}
-        {/*  select*/}
-        {/*  fullWidth*/}
-        {/*  name="role"*/}
-        {/*  size="small"*/}
-        {/*  label="Role"*/}
-        {/*  value={formik.values.role}*/}
-        {/*  onBlur={formik.handleBlur}*/}
-        {/*  onChange={formik.handleChange}*/}
-        {/*  error={formik.touched.role && !!formik.errors.role}*/}
-        {/*  helperText={formik.touched.role && formik.errors.role}*/}
-        {/*>*/}
-        {/*  <MenuItem value="user">User</MenuItem>*/}
-        {/*  <MenuItem value="admin">Admin</MenuItem>*/}
-        {/*</TextField>*/}
         <Button variant="contained" color="success" type="submit">
           Sign up
         </Button>
@@ -104,5 +89,3 @@ const SignupForm = ({ userRegistration }) => {
     </Box>
   );
 };
-
-export default SignupForm;

@@ -2,7 +2,7 @@ import React from "react";
 import { box } from "./Home.styles";
 import { Box, Container, Typography } from "@mui/material";
 
-const Home = () => {
+export const Home = () => {
   return (
     <Container>
       <Box sx={box}>
@@ -13,5 +13,3 @@ const Home = () => {
     </Container>
   );
 };
-
-export default Home;

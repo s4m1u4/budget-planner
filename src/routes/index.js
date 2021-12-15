@@ -1,5 +1,3 @@
-import RoutesList from "./RoutesList/RoutesList";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import PublicRoute from "./PublicRoute/PublicRoute";
-
-export { RoutesList, PrivateRoute, PublicRoute };
+export { PrivateRoute } from "./PrivateRoute";
+export { PublicRoute } from "./PublicRoute";
+export { RoutesList } from "./RoutesList";
