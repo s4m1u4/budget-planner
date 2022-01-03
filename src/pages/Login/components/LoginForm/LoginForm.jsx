@@ -10,6 +10,13 @@ export const LoginForm = ({ userAuthentication }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
+  const handleSubmit = async (values) => {
+    const response = await userAuthentication(values);
+    response && setErrorMessage(response);
+    !response && navigate("/");
+    !response && formik.resetForm();
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -17,10 +24,7 @@ export const LoginForm = ({ userAuthentication }) => {
     },
     validationSchema: LoginFormSchema,
     onSubmit: async (values) => {
-      const response = await userAuthentication(values);
-      setErrorMessage(response);
-      !response && navigate("/");
-      !response && formik.resetForm();
+      await handleSubmit(values);
     },
   });
 

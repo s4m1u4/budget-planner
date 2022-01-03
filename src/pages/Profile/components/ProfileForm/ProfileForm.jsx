@@ -10,6 +10,16 @@ export class ProfileForm extends React.Component {
     this.props.navigate(-1);
   };
 
+  handleSubmit = async (values) => {
+    const userData = {
+      ...this.props.userData,
+      ...values,
+    };
+    await this.props.setNewUserData(userData);
+    this.props.navigate(-1);
+    await this.props.setUserData();
+  };
+
   render() {
     return (
       <Formik
@@ -22,13 +32,7 @@ export class ProfileForm extends React.Component {
         }}
         validateOnBlur
         onSubmit={async (values) => {
-          const userData = {
-            ...this.props.userData,
-            ...values,
-          };
-          await this.props.setNewUserData(userData);
-          this.props.navigate(-1);
-          await this.props.setUserData();
+          await this.handleSubmit(values);
         }}
       >
         {({

@@ -3,5 +3,7 @@ import { Navigate } from "react-router-dom";
 import { isAuth } from "../../helpers";
 
 export const PublicRoute = ({ children }) => {
-  return <Fragment>{isAuth() ? <Navigate to="/" /> : children}</Fragment>;
+  return (
+    <Fragment>{isAuth() ? <Navigate to="/dashboard" /> : children}</Fragment>
+  );
 };
