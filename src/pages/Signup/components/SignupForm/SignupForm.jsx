@@ -9,6 +9,13 @@ export const SignupForm = ({ userRegistration }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
+  const handleSubmit = async (values) => {
+    const response = await userRegistration(values);
+    setErrorMessage(response);
+    !response && navigate("/login");
+    !response && formik.resetForm();
+  };
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -18,10 +25,7 @@ export const SignupForm = ({ userRegistration }) => {
     },
     validationSchema: SignupFormSchema,
     onSubmit: async (values) => {
-      const response = await userRegistration(values);
-      setErrorMessage(response);
-      !response && navigate("/login");
-      !response && formik.resetForm();
+      await handleSubmit(values);
     },
   });
 

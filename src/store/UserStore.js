@@ -15,12 +15,12 @@ export class UserStore {
     this.userData = userData;
   };
 
-  setIsAuth = () => {
-    this.isAuth = isAuth();
-  };
-
   setIsLoading = () => {
     this.isLoading = !this.isLoading;
+  };
+
+  setIsAuth = () => {
+    this.isAuth = isAuth();
   };
 
   userRegistration = async (userDataset) => {
@@ -42,7 +42,6 @@ export class UserStore {
 
   userAuthentication = async (userDataset) => {
     try {
-      this.setIsLoading();
       const { token } = await this.api.fetchRequest({
         url: "/user/login",
         method: "post",
@@ -53,8 +52,6 @@ export class UserStore {
       this.setIsAuth();
     } catch (error) {
       return error.response.data.details;
-    } finally {
-      this.setIsLoading();
     }
   };
 
@@ -84,7 +81,6 @@ export class UserStore {
 
   getUserData = async () => {
     try {
-      this.setIsLoading();
       const userData = await this.api.fetchRequest({
         url: "/user",
         method: "get",
@@ -92,12 +88,9 @@ export class UserStore {
         token: getToken(),
       });
       this.setUserData(userData);
-      this.setIsAuth();
       return userData;
     } catch (error) {
       console.error(error);
-    } finally {
-      this.setIsLoading();
     }
   };
 }

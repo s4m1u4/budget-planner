@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
-export const NotFoundBox = styled.div({
-  padding: "20px 0",
+export const RecordsListWrapper = styled.div({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  rowGap: "5px",
 });
