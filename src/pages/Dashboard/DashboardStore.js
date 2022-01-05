@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { getToken } from "../../helpers";
 
 export class DashboardStore {
+  limit = 0;
   histories = [];
   categories = [];
   isLoading = false;
@@ -23,6 +24,10 @@ export class DashboardStore {
     this.categories = categories;
   };
 
+  setLimit = (amount) => {
+    this.limit = Math.ceil(amount / 10);
+  };
+
   setNewHistory = async (userDataset) => {
     try {
       this.setIsLoading();
@@ -37,6 +42,9 @@ export class DashboardStore {
         method: "get",
         body: null,
         token: getToken(),
+        params: {
+          limit: 10000,
+        },
       });
       this.setHistories(histories);
     } catch (error) {
@@ -69,15 +77,41 @@ export class DashboardStore {
     }
   };
 
-  getHistories = async () => {
+  getHistories = async (page, limit) => {
     try {
-      const { histories } = await this.api.fetchRequest({
+      const { histories, historiesLength } = await this.api.fetchRequest({
         url: "/history",
         method: "get",
         body: null,
         token: getToken(),
+        params: {
+          page: page ? page : null,
+          limit: limit ? limit : null,
+        },
       });
       this.setHistories(histories);
+      this.setLimit(historiesLength);
+      return histories;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getFilteredHistories = async (type, category, page) => {
+    try {
+      const { histories, historiesLength } = await this.api.fetchRequest({
+        url: "/history",
+        method: "get",
+        body: null,
+        token: getToken(),
+        params: {
+          type: type ? type : null,
+          category: category ? category : null,
+          page: page ? page : null,
+        },
+      });
+      this.setHistories(histories);
+      this.setLimit(historiesLength);
       return histories;
     } catch (error) {
       console.error(error);
@@ -94,6 +128,39 @@ export class DashboardStore {
       });
       this.setCategories(categories);
       return categories;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteHistory = async (id) => {
+    try {
+      await this.api.fetchRequest({
+        url: "/history",
+        method: "delete",
+        body: null,
+        token: getToken(),
+        params: {
+          ids: id,
+          deleteAll: false,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteAllHistories = async () => {
+    try {
+      await this.api.fetchRequest({
+        url: "/history",
+        method: "delete",
+        body: null,
+        token: getToken(),
+        params: {
+          deleteAll: true,
+        },
+      });
     } catch (error) {
       console.error(error);
     }

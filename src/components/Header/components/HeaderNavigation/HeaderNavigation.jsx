@@ -8,6 +8,9 @@ export const HeaderNavigation = () => {
       <Button color="inherit" component={Link} to="/dashboard">
         Dashboard
       </Button>
+      <Button color="inherit" component={Link} to="/records">
+        Records
+      </Button>
     </Box>
   );
 };

@@ -13,3 +13,12 @@ export const clearToken = () => {
 export const isAuth = () => {
   return Boolean(getToken());
 };
+
+export const calculateRecords = (histories, categories) => {
+  return histories.map((history) => ({
+    ...history,
+    category: categories.find(
+      (category) => category.id === history.category_id
+    ),
+  }));
+};
