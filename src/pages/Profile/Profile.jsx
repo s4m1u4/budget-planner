@@ -1,6 +1,6 @@
 import React from "react";
 import { CircularProgress, Container } from "@mui/material";
-import { Avatar, ProgressBox, Title, Wrapper } from "./Profile.styles";
+import { Avatar, ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
 import { ProfileForm } from "./components/ProfileForm/ProfileForm";
 import { withRouter } from "../../hooks";
 import { ProfileData } from "./components/ProfileData/ProfileData";
@@ -29,7 +29,7 @@ class Profile extends React.Component {
     return (
       <Container>
         <Wrapper>
-          <Title>Profile page</Title>
+          <ProfileTitle>Profile page</ProfileTitle>
           <Avatar />
           {this.props.params.editMode ? (
             this.state.isLoading ? (

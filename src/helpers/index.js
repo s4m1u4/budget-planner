@@ -1,1 +1,7 @@
-export { clearToken, getToken, setToken, isAuth } from "./helpers";
+export {
+  clearToken,
+  getToken,
+  setToken,
+  isAuth,
+  calculateRecords,
+} from "./helpers";

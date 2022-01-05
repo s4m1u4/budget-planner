@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { calculateRecords } from "./helpers";
+import React, { useCallback, useEffect, useState } from "react";
+import { calculateRecords } from "../../helpers";
 import { Charts, Overview, Records } from "./components";
 import { CircularProgress, Container } from "@mui/material";
 
@@ -20,20 +20,20 @@ export const Dashboard = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      await getCategories();
-      await getHistories();
-      setIsLoading(false);
-    };
-
-    fetchData();
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    await getCategories();
+    await getHistories(null, 10000);
+    setIsLoading(false);
   }, [getCategories, getHistories]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const records = calculateRecords(histories, categories);
 
-  const lastRecords = records.slice(0, 5);
+  const lastRecords = records.slice(-5);
 
   return (
     <Container>

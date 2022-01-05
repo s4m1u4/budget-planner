@@ -16,8 +16,8 @@ export const Avatar = styled.div({
   backgroundRepeat: "no-repeat",
 });
 
-export const Title = styled.h1({
-  marginBottom: "10px",
+export const ProfileTitle = styled.h1({
+  marginBottom: "15px",
 });
 
 export const ProgressBox = styled.div({
