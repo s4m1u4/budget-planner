@@ -1,4 +1,6 @@
-export const setToken = (token) => {
+import { ICategory, IHistory } from "../types";
+
+export const setToken = (token: string) => {
   return sessionStorage.setItem("token", token);
 };
 
@@ -14,7 +16,10 @@ export const isAuth = () => {
   return Boolean(getToken());
 };
 
-export const calculateRecords = (histories, categories) => {
+export const calculateRecords = (
+  histories: IHistory[],
+  categories: ICategory[]
+) => {
   return histories.map((history) => ({
     ...history,
     category: categories.find(
