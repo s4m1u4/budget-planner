@@ -1,8 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
+import { IUserData } from "../../../../types";
 import { ButtonComponent } from "../../../../components/shared";
+
 import { UserData, UserDataMain } from "./ProfileData.styles";
 
-export class ProfileData extends React.Component {
+interface ProfileDataProps {
+  navigate: (path: string | number) => void;
+  userData: IUserData;
+}
+
+export class ProfileData extends Component<ProfileDataProps> {
   handleClick = () => {
     this.props.navigate("edit");
   };

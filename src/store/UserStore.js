@@ -64,13 +64,7 @@ export class UserStore {
         body: userDataset,
         token: getToken(),
       });
-      const userData = await this.api.fetchRequest({
-        url: "/user",
-        method: "get",
-        body: null,
-        token: getToken(),
-      });
-      this.setUserData(userData);
+      await this.getUserData();
       this.setIsAuth();
     } catch (error) {
       console.log(error);
