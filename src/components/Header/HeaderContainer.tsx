@@ -4,7 +4,10 @@ import { inject, observer } from "mobx-react";
 export const HeaderContainer = inject(
   ({
     rootStore: {
-      userStore: { userData, setIsAuth },
+      userStore: {
+        setIsAuth,
+        userData: { firstName, lastName },
+      },
     },
-  }) => ({ userData, setIsAuth })
+  }) => ({ firstName, lastName, setIsAuth })
 )(observer(Header));

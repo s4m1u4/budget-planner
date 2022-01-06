@@ -4,13 +4,13 @@ export const TextField = styled.div({
   marginBottom: "1rem",
 });
 
-export const Label = styled.label((props) => ({
+export const Label = styled.label((props: any) => ({
   color: props.error && "#dc3545",
   display: "block",
   marginBottom: "0.25rem",
 }));
 
-export const Input = styled.input((props) => ({
+export const Input = styled.input((props: any) => ({
   width: props.fullWidth && "100%",
   display: "block",
   height: "calc(2.25rem + 2px)",

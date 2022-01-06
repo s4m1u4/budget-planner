@@ -1,17 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import { Formik, Form } from "formik";
 import { ProfileFormSchema } from "./ProfileFormSchema";
+import { IUserData } from "../../../../types";
 import { ButtonComponent, InputComponent } from "../../../../components/shared";
 
 import { ButtonGroup } from "./ProfileForm.styles";
 
-export class ProfileForm extends React.Component {
+interface ProfileFormProps {
+  navigate: (path: string | number) => void;
+  userData: IUserData;
+  setUserData: () => void;
+  setNewUserData: (userData: IUserData) => void;
+}
+
+interface IHandleSubmitValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export class ProfileForm extends Component<ProfileFormProps> {
   handleClick = () => {
     this.props.navigate(-1);
   };
 
-  handleSubmit = async (values) => {
-    const userData = {
+  handleSubmit = async (values: IHandleSubmitValues) => {
+    const userData: IUserData = {
       ...this.props.userData,
       ...values,
     };
@@ -21,14 +35,16 @@ export class ProfileForm extends React.Component {
   };
 
   render() {
+    const { firstName, lastName, email } = this.props.userData;
+
     return (
       <Formik
         enableReinitialize
         validationSchema={ProfileFormSchema}
         initialValues={{
-          firstName: this.props.userData.firstName,
-          lastName: this.props.userData.lastName,
-          email: this.props.userData.email,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
         }}
         validateOnBlur
         onSubmit={async (values) => {
@@ -51,9 +67,9 @@ export class ProfileForm extends React.Component {
               name="firstName"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.firstName}
-              error={touched.firstName && !!errors.firstName}
-              helperText={touched.firstName && errors.firstName}
+              value={values.firstName || ""}
+              error={(touched.firstName && !!errors.firstName) || false}
+              helperText={(touched.firstName && errors.firstName) || ""}
             />
             <InputComponent
               label="Last name"
@@ -61,9 +77,9 @@ export class ProfileForm extends React.Component {
               name="lastName"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.lastName}
-              error={touched.lastName && !!errors.lastName}
-              helperText={touched.lastName && errors.lastName}
+              value={values.lastName || ""}
+              error={(touched.lastName && !!errors.lastName) || false}
+              helperText={(touched.lastName && errors.lastName) || ""}
             />
             <InputComponent
               label="Email"
@@ -71,9 +87,9 @@ export class ProfileForm extends React.Component {
               name="email"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.email}
-              error={touched.email && !!errors.email}
-              helperText={touched.email && errors.email}
+              value={values.email || ""}
+              error={(touched.email && !!errors.email) || false}
+              helperText={(touched.email && errors.email) || ""}
             />
             <ButtonGroup>
               <ButtonComponent
@@ -89,7 +105,7 @@ export class ProfileForm extends React.Component {
                 color="error"
                 onClick={this.handleClick}
               >
-                Сancel
+                Cancel
               </ButtonComponent>
             </ButtonGroup>
           </Form>

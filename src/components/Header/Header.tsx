@@ -1,8 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { AppBar, Container, Toolbar } from "@mui/material";
 import { HeaderMenu, HeaderNavigation } from "./components";
 
-export const Header = ({ userData, setIsAuth }) => {
+interface HeaderProps {
+  lastName: string;
+  firstName: string;
+  setIsAuth: () => void;
+}
+
+export const Header: FC<HeaderProps> = (props) => {
   return (
     <AppBar position="sticky" sx={{ width: "100%" }}>
       <Container>
@@ -14,7 +20,7 @@ export const Header = ({ userData, setIsAuth }) => {
           }}
         >
           <HeaderNavigation />
-          <HeaderMenu userData={userData} setIsAuth={setIsAuth} />
+          <HeaderMenu {...props} />
         </Toolbar>
       </Container>
     </AppBar>

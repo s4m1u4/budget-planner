@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import {
   Avatar,
   Box,
@@ -10,11 +10,25 @@ import {
 import { Link } from "react-router-dom";
 import { clearToken } from "../../../../helpers";
 
-export const HeaderMenu = ({ userData, setIsAuth }) => {
-  const { firstName, lastName, avatar } = userData;
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(null);
+interface HeaderMenuProps {
+  lastName: string;
+  firstName: string;
+  setIsAuth: () => void;
+}
 
-  const handleOpenUserMenu = (event) => {
+export const HeaderMenu: FC<HeaderMenuProps> = ({
+  firstName,
+  lastName,
+  setIsAuth,
+}) => {
+  const avatarUrl =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEDRhK8UmJi2f3KBGti-__WjKErf1ahArGg&usqp=CAU";
+
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState<null | HTMLElement>(
+    null
+  );
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setIsUserMenuOpen(event.currentTarget);
   };
 
@@ -36,11 +50,7 @@ export const HeaderMenu = ({ userData, setIsAuth }) => {
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
         <Avatar
           alt={`${firstName && firstName} ${lastName && lastName}`}
-          src={
-            avatar
-              ? null
-              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEDRhK8UmJi2f3KBGti-__WjKErf1ahArGg&usqp=CAU"
-          }
+          src={avatarUrl}
         />
       </IconButton>
       <Menu

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 
-export const HeaderNavigation = () => {
+export const HeaderNavigation: FC = () => {
   return (
     <Box>
       <Button color="inherit" component={Link} to="/dashboard">

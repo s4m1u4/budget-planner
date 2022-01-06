@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Button = styled.button((props) => ({
+export const Button = styled.button((props: any) => ({
   minWidth: "100px",
   fontFamily: "inherit",
   appearance: "none",
