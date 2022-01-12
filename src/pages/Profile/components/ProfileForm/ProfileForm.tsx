@@ -6,17 +6,17 @@ import { ButtonComponent, InputComponent } from "../../../../components/shared";
 
 import { ButtonGroup } from "./ProfileForm.styles";
 
+interface IHandleSubmitValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 interface ProfileFormProps {
   navigate: (path: string | number) => void;
   userData: IUserData;
   setUserData: () => void;
   setNewUserData: (userData: IUserData) => void;
-}
-
-interface IHandleSubmitValues {
-  firstName: string;
-  lastName: string;
-  email: string;
 }
 
 export class ProfileForm extends Component<ProfileFormProps> {

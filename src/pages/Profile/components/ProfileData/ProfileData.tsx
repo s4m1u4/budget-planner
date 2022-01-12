@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { IUserData } from "../../../../types";
 import { ButtonComponent } from "../../../../components/shared";
+import { IUserData } from "../../../../types";
 
 import { UserData, UserDataMain } from "./ProfileData.styles";
 

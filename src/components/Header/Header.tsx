@@ -1,12 +1,7 @@
 import React, { FC } from "react";
 import { AppBar, Container, Toolbar } from "@mui/material";
 import { HeaderMenu, HeaderNavigation } from "./components";
-
-interface HeaderProps {
-  lastName: string;
-  firstName: string;
-  setIsAuth: () => void;
-}
+import { HeaderProps } from "./types";
 
 export const Header: FC<HeaderProps> = (props) => {
   return (

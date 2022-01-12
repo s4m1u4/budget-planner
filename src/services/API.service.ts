@@ -1,5 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { IAPI, IFetchRequestValues } from "../types";
+import { IFetchRequestValues } from "../types";
+
+export interface IAPI {
+  fetchRequest: (values: IFetchRequestValues) => any;
+}
 
 export class API implements IAPI {
   fetchRequest = async ({

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FocusEvent, FC } from "react";
 
 import { Input, Label, Message, TextField } from "./InputComponent.styles";
 
@@ -9,9 +9,9 @@ interface InputComponentProps {
   error: boolean;
   value: string;
   helperText: string;
-  onChange: any;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   id?: string;
-  onBlur?: any;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
   fullWidth?: boolean;
 }
 

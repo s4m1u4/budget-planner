@@ -9,14 +9,9 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { clearToken } from "../../../../helpers";
+import { HeaderProps } from "../../types";
 
-interface HeaderMenuProps {
-  lastName: string;
-  firstName: string;
-  setIsAuth: () => void;
-}
-
-export const HeaderMenu: FC<HeaderMenuProps> = ({
+export const HeaderMenu: FC<HeaderProps> = ({
   firstName,
   lastName,
   setIsAuth,

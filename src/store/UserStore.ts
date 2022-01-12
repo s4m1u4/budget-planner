@@ -1,12 +1,29 @@
 import { makeAutoObservable } from "mobx";
 import { getToken, isAuth, setToken } from "../helpers";
 import {
-  IAPI,
   IUserAuthenticationData,
   IUserData,
   IUserRegistrationData,
-  IUserStore,
 } from "../types";
+import { IAPI } from "../services/API.service";
+
+export interface IUserStore {
+  api: IAPI;
+  userData: IUserData;
+  isAuth: boolean;
+  isLoading: boolean;
+  setUserData: (userData: IUserData) => void;
+  setIsLoading: () => void;
+  setIsAuth: () => void;
+  userRegistration: (userRegistrationData: IUserRegistrationData) => void;
+  userAuthentication: (userAuthenticationData: IUserAuthenticationData) => void;
+  setNewUserData: (userData: IUserData) => void;
+  getUserData: () => void;
+}
+
+interface IUserAuthentication {
+  token: string;
+}
 
 export class UserStore implements IUserStore {
   api: IAPI;
@@ -56,10 +73,10 @@ export class UserStore implements IUserStore {
   };
 
   userAuthentication = async (
-    userAuthenticationData: IUserAuthenticationData
+    userAuthenticationData: IUserAuthenticationData | undefined
   ) => {
     try {
-      const { token } = await this.api.fetchRequest({
+      const { token }: IUserAuthentication = await this.api.fetchRequest({
         url: "/user/login",
         method: "post",
         body: userAuthenticationData,
@@ -92,7 +109,7 @@ export class UserStore implements IUserStore {
 
   getUserData = async () => {
     try {
-      const userData = await this.api.fetchRequest({
+      const userData: IUserData = await this.api.fetchRequest({
         url: "/user",
         method: "get",
         body: null,
