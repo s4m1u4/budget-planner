@@ -3,9 +3,9 @@ import React, { FC, ReactChild, ReactNode } from "react";
 import { Button } from "./ButtonComponent.styles";
 
 interface ButtonComponentProps {
-  onClick: () => any;
+  onClick: () => void;
   children: ReactChild | ReactNode;
-  type?: string;
+  type?: "button" | "submit" | "reset" | undefined;
   color?: string;
   disabled?: boolean;
 }

@@ -1,10 +1,9 @@
 export type {
-  IUserData,
+  IRecord,
   IHistory,
   ICategory,
+  IUserData,
   IFetchRequestValues,
-  IAPI,
-  IUserStore,
   IUserAuthenticationData,
   IUserRegistrationData,
 } from "./types";

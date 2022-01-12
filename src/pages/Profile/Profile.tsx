@@ -1,27 +1,11 @@
 import React, { Component } from "react";
-import { IUserData } from "../../types";
 import { withRouter } from "../../hocs";
-import { ProfileData } from "./components/ProfileData";
-import { ProfileForm } from "./components/ProfileForm";
+import { ProfileData, ProfileForm } from "./components";
 import { CircularProgress, Container } from "@mui/material";
+import { ProfileProps, ProfileState } from "./types";
 
 import { Avatar, ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
-
-interface IParams {
-  editMode: string;
-}
-
-interface ProfileProps {
-  params: IParams;
-  navigate: (path: string | number) => void;
-  getUserData: () => object;
-  setNewUserData: () => void;
-}
-
-interface ProfileState {
-  userData: IUserData;
-  isLoading: boolean;
-}
+import { IUserData } from "../../types";
 
 class Profile extends Component<ProfileProps, ProfileState> {
   constructor(props: ProfileProps) {
@@ -45,7 +29,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   setUserData = async () => {
     this.setState({ isLoading: true });
-    const userData: any = await this.props.getUserData();
+    const userData: IUserData = await this.props.getUserData();
     this.setState({ userData });
     this.setState({ isLoading: false });
   };

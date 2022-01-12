@@ -1,10 +1,11 @@
 import { API } from "../services";
-import { UserStore } from "./UserStore";
+import { IUserStore, UserStore } from "./UserStore";
 import { DashboardStore } from "../pages/Dashboard";
-import { IAPI, IUserStore } from "../types";
+import { IDashboardStore } from "../pages/Dashboard/DashboardStore";
+import { IAPI } from "../services/API.service";
 
 export class RootStore {
   api: IAPI = new API();
   userStore: IUserStore = new UserStore(this.api);
-  dashboardStore = new DashboardStore(this.api);
+  dashboardStore: IDashboardStore = new DashboardStore(this.api);
 }
