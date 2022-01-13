@@ -3,6 +3,8 @@ import { Formik, Form } from "formik";
 import { ProfileFormSchema } from "./ProfileFormSchema";
 import { IUserData } from "../../../../types";
 import { ButtonComponent, InputComponent } from "../../../../components/shared";
+import { ProfileModal } from "../ProfileModal";
+import { IPasswordData } from "../../../Records/types";
 
 import { ButtonGroup } from "./ProfileForm.styles";
 
@@ -13,14 +15,34 @@ interface IHandleSubmitValues {
 }
 
 interface ProfileFormProps {
+  editMode: string;
   navigate: (path: string | number) => void;
   userData: IUserData;
   setUserData: () => void;
   setNewUserData: (userData: IUserData) => void;
+  setNewPassword: (passwordData: IPasswordData) => string | null;
 }
 
-export class ProfileForm extends Component<ProfileFormProps> {
-  handleClick = () => {
+interface ProfileFormState {
+  isOpenModal: boolean;
+}
+
+export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
+  constructor(props: ProfileFormProps) {
+    super(props);
+    this.state = {
+      isOpenModal: false,
+    };
+  }
+
+  handleOpen = () => this.setState({ isOpenModal: true });
+  handleClose = () => this.setState({ isOpenModal: false });
+
+  handleClickEdit = () => {
+    this.props.navigate("edit");
+  };
+
+  handleClickCancel = () => {
     this.props.navigate(-1);
   };
 
@@ -32,6 +54,10 @@ export class ProfileForm extends Component<ProfileFormProps> {
     await this.props.setNewUserData(userData);
     this.props.navigate(-1);
     await this.props.setUserData();
+  };
+
+  handleClickChangePassword = () => {
+    this.handleOpen();
   };
 
   render() {
@@ -61,7 +87,13 @@ export class ProfileForm extends Component<ProfileFormProps> {
           dirty,
         }) => (
           <Form>
+            <ProfileModal
+              open={this.state.isOpenModal}
+              handleClose={this.handleClose}
+              setNewPassword={this.props.setNewPassword}
+            />
             <InputComponent
+              disabled={!Boolean(this.props.editMode)}
               label="First name"
               type="text"
               name="firstName"
@@ -72,6 +104,7 @@ export class ProfileForm extends Component<ProfileFormProps> {
               helperText={(touched.firstName && errors.firstName) || ""}
             />
             <InputComponent
+              disabled={!Boolean(this.props.editMode)}
               label="Last name"
               type="text"
               name="lastName"
@@ -82,6 +115,7 @@ export class ProfileForm extends Component<ProfileFormProps> {
               helperText={(touched.lastName && errors.lastName) || ""}
             />
             <InputComponent
+              disabled={!Boolean(this.props.editMode)}
               label="Email"
               type="text"
               name="email"
@@ -91,22 +125,42 @@ export class ProfileForm extends Component<ProfileFormProps> {
               error={(touched.email && !!errors.email) || false}
               helperText={(touched.email && errors.email) || ""}
             />
+            <ButtonComponent
+              style={{ marginBottom: "1rem", minWidth: "250px" }}
+              type="button"
+              color="secondary"
+              onClick={this.handleClickChangePassword}
+            >
+              Change password
+            </ButtonComponent>
             <ButtonGroup>
-              <ButtonComponent
-                type="submit"
-                color="success"
-                disabled={!dirty}
-                onClick={handleSubmit}
-              >
-                Save
-              </ButtonComponent>
-              <ButtonComponent
-                type="button"
-                color="error"
-                onClick={this.handleClick}
-              >
-                Cancel
-              </ButtonComponent>
+              {!this.props.editMode ? (
+                <ButtonComponent
+                  type="button"
+                  color="primary"
+                  onClick={this.handleClickEdit}
+                >
+                  Edit
+                </ButtonComponent>
+              ) : (
+                <>
+                  <ButtonComponent
+                    type="submit"
+                    color="success"
+                    disabled={!dirty}
+                    onClick={handleSubmit}
+                  >
+                    Save
+                  </ButtonComponent>
+                  <ButtonComponent
+                    type="button"
+                    color="error"
+                    onClick={this.handleClickCancel}
+                  >
+                    Cancel
+                  </ButtonComponent>
+                </>
+              )}
             </ButtonGroup>
           </Form>
         )}
