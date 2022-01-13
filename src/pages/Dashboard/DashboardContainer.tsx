@@ -14,6 +14,7 @@ export const DashboardContainer = compose<DashboardProps, {}>(
           categories,
           getCategories,
           setNewCategory,
+          deleteCategory,
         },
       },
     }) => ({
@@ -23,6 +24,7 @@ export const DashboardContainer = compose<DashboardProps, {}>(
       categories,
       getCategories,
       setNewCategory,
+      deleteCategory,
     })
   ),
   observer

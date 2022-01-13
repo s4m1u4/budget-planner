@@ -20,6 +20,7 @@ export interface IDashboardStore {
   getCategories: () => void;
   deleteHistory: (id: string) => void;
   deleteAllHistories: () => void;
+  deleteCategory: (id: string) => void;
 }
 
 interface ICategories {
@@ -108,7 +109,7 @@ export class DashboardStore implements IDashboardStore {
     }
   };
 
-  getHistories = async (page: number | null, limit: number | null) => {
+  getHistories = async (page?: number | null, limit?: number | null) => {
     try {
       const { histories, historiesLength }: IHistories =
         await this.api.fetchRequest({
@@ -130,9 +131,9 @@ export class DashboardStore implements IDashboardStore {
   };
 
   getFilteredHistories = async (
-    type: string,
-    category: string,
-    page: number
+    type: string | null,
+    category: string | null,
+    page: number | null
   ) => {
     try {
       const { histories, historiesLength }: IHistories =
@@ -198,6 +199,28 @@ export class DashboardStore implements IDashboardStore {
           deleteAll: true,
         },
       });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  deleteCategory = async (id: string) => {
+    try {
+      await this.getFilteredHistories(null, id, null);
+      for (let i = 0; i < this.histories.length; i++) {
+        await this.deleteHistory(this.histories[i].id);
+      }
+      await this.api.fetchRequest({
+        url: "/category",
+        method: "delete",
+        body: null,
+        token: getToken(),
+        params: {
+          id: id,
+        },
+      });
+      await this.getCategories();
+      await this.getHistories(null, 10000);
     } catch (error) {
       console.error(error);
     }

@@ -19,6 +19,7 @@ export const Dashboard: FC<DashboardProps> = ({
   categories,
   getCategories,
   setNewCategory,
+  deleteCategory,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -53,7 +54,12 @@ export const Dashboard: FC<DashboardProps> = ({
               lastRecords={lastRecords}
               setNewHistory={setNewHistory}
             />
-            <Charts records={records} setNewCategory={setNewCategory} />
+            <Charts
+              records={records}
+              categories={categories}
+              deleteCategory={deleteCategory}
+              setNewCategory={setNewCategory}
+            />
           </Grid>
         </Wrapper>
       )}

@@ -11,8 +11,10 @@ import {
   calculateCategoriesExpense,
 } from "./helpers";
 import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { ICategoryData } from "../../types";
-import { IRecord } from "../../../../types";
+import { ICategory, IRecord } from "../../../../types";
+import { ChartsModal } from "./ChartsModal";
 
 import {
   Section,
@@ -21,16 +23,27 @@ import {
   SectionTitle,
 } from "../../Dashboard.styles";
 import { ChartsList } from "./Charts.styles";
+import { IconsGroup } from "../../../Records/Records.styles";
 
 interface ChartsProps {
   records: IRecord[];
+  categories: ICategory[];
+  deleteCategory: (id: string) => void;
   setNewCategory: (categoryData: ICategoryData) => void;
 }
 
-export const Charts: FC<ChartsProps> = ({ setNewCategory, records }) => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  const handleOpen = () => setIsOpenModal(true);
-  const handleClose = () => setIsOpenModal(false);
+export const Charts: FC<ChartsProps> = ({
+  setNewCategory,
+  deleteCategory,
+  records,
+  categories,
+}) => {
+  const [isOpenModalCreate, setIsOpenModalCreate] = useState<boolean>(false);
+  const [isOpenModalDelete, setIsOpenModalDelete] = useState<boolean>(false);
+  const handleOpenCreate = () => setIsOpenModalCreate(true);
+  const handleCloseCreate = () => setIsOpenModalCreate(false);
+  const handleOpenDelete = () => setIsOpenModalDelete(true);
+  const handleCloseDelete = () => setIsOpenModalDelete(false);
 
   const recordIncome: IRecord[] = calculateRecordsIncome(records);
   const recordsExpense: IRecord[] = calculateRecordsExpense(records);
@@ -45,9 +58,23 @@ export const Charts: FC<ChartsProps> = ({ setNewCategory, records }) => {
     <Section area="charts">
       <SectionHeader>
         <SectionTitle>Charts</SectionTitle>
-        <IconButton size="small" sx={{ padding: "0" }} onClick={handleOpen}>
-          <AddCircleOutlineSharpIcon />
-        </IconButton>
+        <IconsGroup>
+          <IconButton
+            size="small"
+            sx={{ padding: "0" }}
+            onClick={handleOpenCreate}
+          >
+            <AddCircleOutlineSharpIcon />
+          </IconButton>
+          <IconButton
+            sx={{ padding: 0 }}
+            size="small"
+            onClick={handleOpenDelete}
+            disabled={!Boolean(categories.length)}
+          >
+            <DeleteForeverRoundedIcon />
+          </IconButton>
+        </IconsGroup>
       </SectionHeader>
       <SectionBody>
         <ChartsList>
@@ -56,9 +83,15 @@ export const Charts: FC<ChartsProps> = ({ setNewCategory, records }) => {
         </ChartsList>
       </SectionBody>
       <ChartsForm
-        open={isOpenModal}
-        handleClose={handleClose}
+        open={isOpenModalCreate}
+        handleClose={handleCloseCreate}
         setNewCategory={setNewCategory}
+      />
+      <ChartsModal
+        open={isOpenModalDelete}
+        handleClose={handleCloseDelete}
+        categories={categories}
+        deleteCategory={deleteCategory}
       />
     </Section>
   );
