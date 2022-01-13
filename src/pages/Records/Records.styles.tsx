@@ -46,3 +46,8 @@ export const SectionTitle = styled.h3({
   fontSize: "22px",
   fontWeight: "500",
 });
+
+export const IconsGroup = styled.div({
+  display: "flex",
+  gap: "10px",
+});

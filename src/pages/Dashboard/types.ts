@@ -8,6 +8,7 @@ export interface DashboardProps {
   getCategories: () => void;
   setNewHistory: (historyData: IHistoryData) => void;
   setNewCategory: (categoryData: ICategoryData) => void;
+  deleteCategory: (id: string) => void;
 }
 
 export interface IHistoryData {
