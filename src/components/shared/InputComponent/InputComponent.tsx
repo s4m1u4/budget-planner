@@ -12,6 +12,7 @@ interface InputComponentProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
   fullWidth?: boolean;
 }
 

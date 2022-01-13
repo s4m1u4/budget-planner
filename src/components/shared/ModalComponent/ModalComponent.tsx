@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactChild, ReactNode } from "react";
 import { Modal } from "@mui/material";
 
 import { ModalWrapper } from "./ModalComponent.styles";
@@ -6,6 +6,7 @@ import { ModalWrapper } from "./ModalComponent.styles";
 interface ModalComponentProps {
   open: boolean;
   onClose: () => void;
+  children: ReactChild | ReactNode;
 }
 
 export const ModalComponent: FC<ModalComponentProps> = ({

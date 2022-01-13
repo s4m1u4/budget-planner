@@ -7,9 +7,9 @@ export const ProfileContainer = compose<ProfileProps, {}>(
   inject(
     ({
       rootStore: {
-        userStore: { getUserData, setNewUserData },
+        userStore: { getUserData, setNewUserData, setNewPassword },
       },
-    }) => ({ getUserData, setNewUserData })
+    }) => ({ getUserData, setNewUserData, setNewPassword })
   ),
   observer
 )(Profile);

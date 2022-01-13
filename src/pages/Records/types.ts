@@ -15,3 +15,8 @@ export interface IFilters {
   type: string;
   category: string;
 }
+
+export interface IPasswordData {
+  password: string;
+  repeatedPassword: string;
+}

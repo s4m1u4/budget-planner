@@ -6,6 +6,7 @@ import {
   IUserRegistrationData,
 } from "../types";
 import { IAPI } from "../services/API.service";
+import { IPasswordData } from "../pages/Records/types";
 
 export interface IUserStore {
   api: IAPI;
@@ -19,6 +20,7 @@ export interface IUserStore {
   userAuthentication: (userAuthenticationData: IUserAuthenticationData) => void;
   setNewUserData: (userData: IUserData) => void;
   getUserData: () => void;
+  setNewPassword: (passwordData: IPasswordData) => void;
 }
 
 interface IUserAuthentication {
@@ -119,6 +121,19 @@ export class UserStore implements IUserStore {
       return userData;
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  setNewPassword = async (passwordData: IPasswordData) => {
+    try {
+      await this.api.fetchRequest({
+        url: "/user/password/repeat",
+        method: "patch",
+        body: passwordData,
+        token: getToken(),
+      });
+    } catch (error: any) {
+      return error.response.data.details;
     }
   };
 }

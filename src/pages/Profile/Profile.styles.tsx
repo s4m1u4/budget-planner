@@ -23,5 +23,5 @@ export const ProfileTitle = styled.h1({
 export const ProgressBox = styled.div({
   display: "flex",
   justifyContent: "center",
-  margin: "50px 0",
+  margin: "120px 0",
 });

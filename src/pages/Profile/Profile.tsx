@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "../../hocs";
-import { ProfileData, ProfileForm } from "./components";
+import { ProfileForm } from "./components";
 import { CircularProgress, Container } from "@mui/material";
 import { ProfileProps, ProfileState } from "./types";
+import { IUserData } from "../../types";
 
 import { Avatar, ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
-import { IUserData } from "../../types";
 
 class Profile extends Component<ProfileProps, ProfileState> {
   constructor(props: ProfileProps) {
@@ -39,6 +39,7 @@ class Profile extends Component<ProfileProps, ProfileState> {
       params: { editMode },
       navigate,
       setNewUserData,
+      setNewPassword,
     } = this.props;
     const { userData, isLoading } = this.state;
 
@@ -47,25 +48,19 @@ class Profile extends Component<ProfileProps, ProfileState> {
         <Wrapper>
           <ProfileTitle>Profile page</ProfileTitle>
           <Avatar />
-          {editMode ? (
-            isLoading ? (
-              <ProgressBox>
-                <CircularProgress />
-              </ProgressBox>
-            ) : (
-              <ProfileForm
-                navigate={navigate}
-                userData={userData}
-                setUserData={this.setUserData}
-                setNewUserData={setNewUserData}
-              />
-            )
-          ) : isLoading ? (
+          {isLoading ? (
             <ProgressBox>
               <CircularProgress />
             </ProgressBox>
           ) : (
-            <ProfileData navigate={navigate} userData={userData} />
+            <ProfileForm
+              editMode={editMode}
+              navigate={navigate}
+              userData={userData}
+              setUserData={this.setUserData}
+              setNewUserData={setNewUserData}
+              setNewPassword={setNewPassword}
+            />
           )}
         </Wrapper>
       </Container>
