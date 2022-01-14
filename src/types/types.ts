@@ -31,7 +31,7 @@ export interface IUserData {
   firstName: string;
   lastName: string;
   email: string;
-  avatar: string | null;
+  avatar: string;
   budgetAmount: string;
 }
 
@@ -53,4 +53,8 @@ export interface IUserRegistrationData {
 export interface IUserAuthenticationData {
   email: string;
   password: string;
+}
+
+export interface IAvatarLink {
+  avatar: string;
 }

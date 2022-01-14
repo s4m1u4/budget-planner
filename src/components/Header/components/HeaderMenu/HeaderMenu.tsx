@@ -14,11 +14,9 @@ import { HeaderProps } from "../../types";
 export const HeaderMenu: FC<HeaderProps> = ({
   firstName,
   lastName,
+  avatar,
   setIsAuth,
 }) => {
-  const avatarUrl =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlEDRhK8UmJi2f3KBGti-__WjKErf1ahArGg&usqp=CAU";
-
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<null | HTMLElement>(
     null
   );
@@ -45,7 +43,7 @@ export const HeaderMenu: FC<HeaderProps> = ({
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
         <Avatar
           alt={`${firstName && firstName} ${lastName && lastName}`}
-          src={avatarUrl}
+          src={avatar}
         />
       </IconButton>
       <Menu
