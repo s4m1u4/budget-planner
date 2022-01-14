@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { withRouter } from "../../hocs";
 import { ProfileForm } from "./components";
-import { CircularProgress, Container } from "@mui/material";
+import {
+  Avatar,
+  CircularProgress,
+  Container,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import { ProfileProps, ProfileState } from "./types";
 import { IUserData } from "../../types";
+import { ProfileModalAvatar } from "./components/ProfileModalAvatar";
 
-import { Avatar, ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
+import { ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
 
 class Profile extends Component<ProfileProps, ProfileState> {
   constructor(props: ProfileProps) {
@@ -20,8 +27,12 @@ class Profile extends Component<ProfileProps, ProfileState> {
         budgetAmount: "",
       },
       isLoading: false,
+      isOpenModal: false,
     };
   }
+
+  handleOpen = () => this.setState({ isOpenModal: true });
+  handleClose = () => this.setState({ isOpenModal: false });
 
   componentDidMount = () => {
     this.setUserData();
@@ -47,7 +58,30 @@ class Profile extends Component<ProfileProps, ProfileState> {
       <Container>
         <Wrapper>
           <ProfileTitle>Profile page</ProfileTitle>
-          <Avatar />
+          <ProfileModalAvatar
+            open={this.state.isOpenModal}
+            setUserData={this.setUserData}
+            handleClose={this.handleClose}
+            getUserData={this.props.getUserData}
+            setNewAvatar={this.props.setNewAvatar}
+          />
+          <Tooltip title="Change avatar" arrow placement="right-end">
+            <IconButton
+              onClick={this.handleOpen}
+              sx={{ padding: "0", marginBottom: "15px" }}
+            >
+              <Avatar
+                sx={{
+                  width: "200px",
+                  height: "200px",
+                }}
+                alt={`${userData.firstName && userData.firstName} ${
+                  userData.lastName && userData.lastName
+                }`}
+                src={userData.avatar}
+              />
+            </IconButton>
+          </Tooltip>
           {isLoading ? (
             <ProgressBox>
               <CircularProgress />

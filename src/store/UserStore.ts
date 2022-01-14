@@ -7,6 +7,7 @@ import {
 } from "../types";
 import { IAPI } from "../services/API.service";
 import { IPasswordData } from "../pages/Records/types";
+import { IAvatarLink } from "../types/types";
 
 export interface IUserStore {
   api: IAPI;
@@ -21,6 +22,7 @@ export interface IUserStore {
   setNewUserData: (userData: IUserData) => void;
   getUserData: () => void;
   setNewPassword: (passwordData: IPasswordData) => void;
+  setNewAvatar: (avatar: IAvatarLink) => void;
 }
 
 interface IUserAuthentication {
@@ -34,7 +36,7 @@ export class UserStore implements IUserStore {
     lastName: "",
     email: "",
     id: "",
-    avatar: null,
+    avatar: "",
     budgetAmount: "",
   };
   isAuth: boolean = isAuth();
@@ -134,6 +136,19 @@ export class UserStore implements IUserStore {
       });
     } catch (error: any) {
       return error.response.data.details;
+    }
+  };
+
+  setNewAvatar = async (avatar: IAvatarLink) => {
+    try {
+      await this.api.fetchRequest({
+        url: "/user",
+        method: "patch",
+        body: avatar,
+        token: getToken(),
+      });
+    } catch (error: any) {
+      console.error(error);
     }
   };
 }

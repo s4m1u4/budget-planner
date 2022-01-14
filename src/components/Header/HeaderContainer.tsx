@@ -9,10 +9,10 @@ export const HeaderContainer = compose<HeaderProps, {}>(
       rootStore: {
         userStore: {
           setIsAuth,
-          userData: { firstName, lastName },
+          userData: { firstName, lastName, avatar },
         },
       },
-    }) => ({ firstName, lastName, setIsAuth })
+    }) => ({ firstName, lastName, setIsAuth, avatar })
   ),
   observer
 )(Header);
