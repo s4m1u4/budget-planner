@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "../../hocs";
-import { ProfileForm } from "./components";
+import { EditMode } from "./components";
 import {
   Avatar,
   CircularProgress,
@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { ProfileProps, ProfileState } from "./types";
 import { IUserData } from "../../types";
-import { ProfileModalAvatar } from "./components/ProfileModalAvatar";
+import { AvatarModal } from "./components/AvatarModal";
 
 import { ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";
 
@@ -34,8 +34,8 @@ class Profile extends Component<ProfileProps, ProfileState> {
   handleOpen = () => this.setState({ isOpenModal: true });
   handleClose = () => this.setState({ isOpenModal: false });
 
-  componentDidMount = () => {
-    this.setUserData();
+  componentDidMount = async () => {
+    await this.setUserData();
   };
 
   setUserData = async () => {
@@ -47,10 +47,12 @@ class Profile extends Component<ProfileProps, ProfileState> {
 
   render() {
     const {
-      params: { editMode },
+      params,
       navigate,
       setNewUserData,
       setNewPassword,
+      setNewAvatar,
+      getUserData,
     } = this.props;
     const { userData, isLoading } = this.state;
 
@@ -58,12 +60,13 @@ class Profile extends Component<ProfileProps, ProfileState> {
       <Container>
         <Wrapper>
           <ProfileTitle>Profile page</ProfileTitle>
-          <ProfileModalAvatar
+          <AvatarModal
             open={this.state.isOpenModal}
+            getUserData={getUserData}
+            setNewAvatar={setNewAvatar}
             setUserData={this.setUserData}
             handleClose={this.handleClose}
-            getUserData={this.props.getUserData}
-            setNewAvatar={this.props.setNewAvatar}
+            onSubmit={(values) => values}
           />
           <Tooltip title="Change avatar" arrow placement="right-end">
             <IconButton
@@ -87,8 +90,9 @@ class Profile extends Component<ProfileProps, ProfileState> {
               <CircularProgress />
             </ProgressBox>
           ) : (
-            <ProfileForm
-              editMode={editMode}
+            <EditMode
+              onSubmit={(values) => values}
+              editMode={params.editMode}
               navigate={navigate}
               userData={userData}
               setUserData={this.setUserData}

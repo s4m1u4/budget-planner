@@ -4,23 +4,25 @@ import {
   InputComponent,
   ModalComponent,
 } from "../../../../components/shared";
-import { ProfileModalSchema } from "./ProfileModalSchema";
+import { PasswordModalSchema } from "./PasswordModalSchema";
 import { useFormik } from "formik";
 import { IPasswordData } from "../../../Records/types";
 import { Alert } from "@mui/material";
 
-import { ButtonGroup, Title } from "./ProfileModal.styles";
+import { ButtonGroup, Title } from "./PasswordModal.styles";
 
-interface ProfileModalProps {
+interface PasswordModalProps {
   open: boolean;
   handleClose: () => void;
   setNewPassword: (passwordData: IPasswordData) => string | null;
+  onSubmit: (values: IPasswordData) => void;
 }
 
-export const ProfileModal: FC<ProfileModalProps> = ({
+export const PasswordModal: FC<PasswordModalProps> = ({
   open,
   handleClose,
   setNewPassword,
+  onSubmit,
 }) => {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -29,6 +31,7 @@ export const ProfileModal: FC<ProfileModalProps> = ({
     responseError && setErrorMessage(responseError);
     !responseError && formik.resetForm();
     !responseError && handleClose();
+    onSubmit(values);
   };
 
   const formik = useFormik({
@@ -36,7 +39,7 @@ export const ProfileModal: FC<ProfileModalProps> = ({
       password: "",
       repeatedPassword: "",
     },
-    validationSchema: ProfileModalSchema,
+    validationSchema: PasswordModalSchema,
     onSubmit: handleSubmit,
   });
 
@@ -51,6 +54,7 @@ export const ProfileModal: FC<ProfileModalProps> = ({
       <form onSubmit={formik.handleSubmit}>
         <InputComponent
           fullWidth
+          id="password"
           label="Password"
           type="password"
           name="password"
@@ -62,6 +66,7 @@ export const ProfileModal: FC<ProfileModalProps> = ({
         />
         <InputComponent
           fullWidth
+          id="repeatedPassword"
           label="Repeat password"
           type="password"
           name="repeatedPassword"

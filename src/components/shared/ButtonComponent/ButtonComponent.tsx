@@ -9,6 +9,7 @@ interface ButtonComponentProps {
   style?: CSSProperties;
   color?: string;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 export const ButtonComponent: FC<ButtonComponentProps> = ({

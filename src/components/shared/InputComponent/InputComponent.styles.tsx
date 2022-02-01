@@ -62,7 +62,7 @@ export const Input = styled.input((props: InputProps) => ({
   },
 }));
 
-export const Message = styled.div({
+export const Message = styled.p({
   marginTop: ".25rem",
   fontSize: ".875rem",
   color: "#dc3545",

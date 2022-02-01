@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const ProfileFormSchema = yup.object({
+export const EditModeSchema = yup.object({
   firstName: yup
     .string()
     .matches(/^[A-z]{4,15}$/, "Enter a valid first name")

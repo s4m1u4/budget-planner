@@ -5,31 +5,34 @@ import {
   InputComponent,
   ModalComponent,
 } from "../../../../components/shared";
-import { ProfileModalAvatarSchema } from "./ProfileModalAvatarSchema";
+import { AvatarModalSchema } from "./AvatarModalSchema";
 import { IAvatarLink, IUserData } from "../../../../types/types";
 
-import { ButtonGroup, Title } from "./ProfileModalAvatar.styles";
+import { ButtonGroup, Title } from "./AvatarModal.styles";
 
-interface ProfileModalAvatarProps {
+interface AvatarModalProps {
   open: boolean;
   handleClose: () => void;
   setNewAvatar: (avatar: IAvatarLink) => void;
   getUserData: () => IUserData;
   setUserData: () => void;
+  onSubmit: (value: IAvatarLink) => void;
 }
 
-export const ProfileModalAvatar: FC<ProfileModalAvatarProps> = ({
+export const AvatarModal: FC<AvatarModalProps> = ({
   open,
   handleClose,
   setNewAvatar,
   getUserData,
   setUserData,
+  onSubmit,
 }) => {
   const handleSubmit = async (values: IAvatarLink) => {
     await setNewAvatar(values);
     await getUserData();
     handleClose();
     await setUserData();
+    onSubmit(values);
     formik.resetForm();
   };
 
@@ -37,7 +40,7 @@ export const ProfileModalAvatar: FC<ProfileModalAvatarProps> = ({
     initialValues: {
       avatar: "",
     },
-    validationSchema: ProfileModalAvatarSchema,
+    validationSchema: AvatarModalSchema,
     onSubmit: handleSubmit,
   });
 
