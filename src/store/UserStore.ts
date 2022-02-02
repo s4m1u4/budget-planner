@@ -119,8 +119,9 @@ export class UserStore implements IUserStore {
         body: null,
         token: getToken(),
       });
-      this.setUserData(userData);
-      return userData;
+      console.log(userData);
+      // this.setUserData(userData);
+      // return userData;
     } catch (error) {
       console.error(error);
     }

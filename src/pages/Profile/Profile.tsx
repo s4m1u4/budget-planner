@@ -39,10 +39,10 @@ class Profile extends Component<ProfileProps, ProfileState> {
   };
 
   setUserData = async () => {
-    this.setState({ isLoading: true });
+    // this.setState({ isLoading: true });
     const userData: IUserData = await this.props.getUserData();
-    this.setState({ userData });
-    this.setState({ isLoading: false });
+    // this.setState({ userData });
+    // this.setState({ isLoading: false });
   };
 
   render() {
