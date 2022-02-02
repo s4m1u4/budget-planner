@@ -113,6 +113,7 @@ export class UserStore implements IUserStore {
 
   getUserData = async () => {
     try {
+      console.log("Start get data");
       const userData: IUserData = await this.api.fetchRequest({
         url: "/user",
         method: "get",
@@ -120,10 +121,12 @@ export class UserStore implements IUserStore {
         token: getToken(),
       });
       console.log(userData);
-      // this.setUserData(userData);
-      // return userData;
+      console.log("Finish get data");
+      this.setUserData(userData);
+      return userData;
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      // console.error(error);
     }
   };
 
