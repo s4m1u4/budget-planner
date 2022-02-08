@@ -7,7 +7,7 @@ import { boxForm, boxInfo, form, title } from "./SignupForm.styles";
 import { SignupProps } from "../../types";
 import { IUserRegistrationData } from "../../../../types";
 
-export const SignupForm: FC<SignupProps> = ({ userRegistration }) => {
+export const SignupForm: FC<SignupProps> = ({ onSubmit, userRegistration }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -28,6 +28,7 @@ export const SignupForm: FC<SignupProps> = ({ userRegistration }) => {
     validationSchema: SignupFormSchema,
     onSubmit: async (values) => {
       await handleSubmit(values);
+      await onSubmit(values);
     },
   });
 

@@ -9,7 +9,10 @@ export const Signup: FC<SignupProps> = ({ userRegistration }) => {
   return (
     <Container>
       <Box sx={box}>
-        <SignupForm userRegistration={userRegistration} />
+        <SignupForm
+          onSubmit={(values) => values}
+          userRegistration={userRegistration}
+        />
       </Box>
     </Container>
   );
