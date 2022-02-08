@@ -113,20 +113,25 @@ export class UserStore implements IUserStore {
 
   getUserData = async () => {
     try {
-      console.log("Start get data");
       const userData: IUserData = await this.api.fetchRequest({
         url: "/user",
         method: "get",
         body: null,
         token: getToken(),
       });
-      console.log(userData);
-      console.log("Finish get data");
       this.setUserData(userData);
       return userData;
     } catch (error) {
-      console.log(error);
-      // console.error(error);
+      const userData = {
+        id: "",
+        lastName: "",
+        firstName: "",
+        avatar: "",
+        email: "",
+        budgetAmount: "",
+      };
+
+      return userData;
     }
   };
 
