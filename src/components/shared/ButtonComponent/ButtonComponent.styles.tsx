@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 
 interface ButtonProps {
   color?: string;
+  fullWidth?: boolean;
 }
 
 export const Button = styled.button((props: ButtonProps) => ({
+  width: props.fullWidth ? "100%" : "",
   minWidth: "100px",
   fontFamily: "inherit",
   appearance: "none",

@@ -24,9 +24,7 @@ export class API implements IAPI {
       },
       baseURL: "http://localhost:3001/api",
     };
-
     const response: AxiosResponse = await axios(config);
-
     return response.data;
   };
 }

@@ -14,7 +14,12 @@ export const ProfileContainer = compose<ProfileProps, {}>(
           setNewAvatar,
         },
       },
-    }) => ({ getUserData, setNewUserData, setNewPassword, setNewAvatar })
+    }) => ({
+      getUserData,
+      setNewUserData,
+      setNewPassword,
+      setNewAvatar,
+    })
   ),
   observer
 )(Profile);

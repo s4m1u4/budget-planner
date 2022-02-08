@@ -122,7 +122,16 @@ export class UserStore implements IUserStore {
       this.setUserData(userData);
       return userData;
     } catch (error) {
-      console.error(error);
+      const userData = {
+        id: "",
+        lastName: "",
+        firstName: "",
+        avatar: "",
+        email: "",
+        budgetAmount: "",
+      };
+
+      return userData;
     }
   };
 

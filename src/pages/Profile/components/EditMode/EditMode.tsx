@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Formik, Form } from "formik";
-import { ProfileFormSchema } from "./ProfileFormSchema";
+import { EditModeSchema } from "./EditModeSchema";
 import { IUserData } from "../../../../types";
 import { ButtonComponent, InputComponent } from "../../../../components/shared";
-import { ProfileModal } from "../ProfileModal";
+import { PasswordModal } from "../PasswordModal";
 import { IPasswordData } from "../../../Records/types";
 
-import { ButtonGroup } from "./ProfileForm.styles";
+import { ButtonGroup } from "./EditMode.styles";
 
 interface IHandleSubmitValues {
   firstName: string;
@@ -14,7 +14,8 @@ interface IHandleSubmitValues {
   email: string;
 }
 
-interface ProfileFormProps {
+interface EditModeProps {
+  onSubmit: (values: IHandleSubmitValues) => void;
   editMode: string;
   navigate: (path: string | number) => void;
   userData: IUserData;
@@ -23,12 +24,12 @@ interface ProfileFormProps {
   setNewPassword: (passwordData: IPasswordData) => string | null;
 }
 
-interface ProfileFormState {
+interface EditModeState {
   isOpenModal: boolean;
 }
 
-export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
-  constructor(props: ProfileFormProps) {
+export class EditMode extends Component<EditModeProps, EditModeState> {
+  constructor(props: EditModeProps) {
     super(props);
     this.state = {
       isOpenModal: false,
@@ -54,6 +55,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     await this.props.setNewUserData(userData);
     this.props.navigate(-1);
     await this.props.setUserData();
+    this.props.onSubmit(values);
   };
 
   handleClickChangePassword = () => {
@@ -66,7 +68,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
     return (
       <Formik
         enableReinitialize
-        validationSchema={ProfileFormSchema}
+        validationSchema={EditModeSchema}
         initialValues={{
           firstName: firstName,
           lastName: lastName,
@@ -86,13 +88,16 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
           handleSubmit,
           dirty,
         }) => (
-          <Form>
-            <ProfileModal
+          <Form style={{ width: "100%", maxWidth: "300px" }}>
+            <PasswordModal
               open={this.state.isOpenModal}
               handleClose={this.handleClose}
               setNewPassword={this.props.setNewPassword}
+              onSubmit={(values) => values}
             />
             <InputComponent
+              fullWidth
+              id="firstName"
               disabled={!Boolean(this.props.editMode)}
               label="First name"
               type="text"
@@ -104,6 +109,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               helperText={(touched.firstName && errors.firstName) || ""}
             />
             <InputComponent
+              fullWidth
+              id="lastName"
               disabled={!Boolean(this.props.editMode)}
               label="Last name"
               type="text"
@@ -115,6 +122,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               helperText={(touched.lastName && errors.lastName) || ""}
             />
             <InputComponent
+              fullWidth
+              id="email"
               disabled={!Boolean(this.props.editMode)}
               label="Email"
               type="text"
@@ -126,7 +135,8 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               helperText={(touched.email && errors.email) || ""}
             />
             <ButtonComponent
-              style={{ marginBottom: "1rem", minWidth: "250px" }}
+              fullWidth
+              style={{ marginBottom: "1rem" }}
               type="button"
               color="secondary"
               onClick={this.handleClickChangePassword}
@@ -136,6 +146,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
             <ButtonGroup>
               {!this.props.editMode ? (
                 <ButtonComponent
+                  fullWidth
                   type="button"
                   color="primary"
                   onClick={this.handleClickEdit}
@@ -145,6 +156,7 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
               ) : (
                 <>
                   <ButtonComponent
+                    fullWidth
                     type="submit"
                     color="success"
                     disabled={!dirty}
@@ -153,8 +165,10 @@ export class ProfileForm extends Component<ProfileFormProps, ProfileFormState> {
                     Save
                   </ButtonComponent>
                   <ButtonComponent
+                    fullWidth
                     type="button"
                     color="error"
+                    disabled={dirty}
                     onClick={this.handleClickCancel}
                   >
                     Cancel
