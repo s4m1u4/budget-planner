@@ -9,7 +9,10 @@ export const Login: FC<LoginProps> = ({ userAuthentication }) => {
   return (
     <Container>
       <Box sx={box}>
-        <LoginForm userAuthentication={userAuthentication} />
+        <LoginForm
+          onSubmit={(values) => values}
+          userAuthentication={userAuthentication}
+        />
       </Box>
     </Container>
   );

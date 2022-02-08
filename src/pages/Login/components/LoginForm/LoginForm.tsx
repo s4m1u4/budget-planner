@@ -8,7 +8,7 @@ import { IUserAuthenticationData } from "../../../../types";
 
 import { boxForm, boxInfo, form, title } from "./LoginForm.styles";
 
-export const LoginForm: FC<LoginProps> = ({ userAuthentication }) => {
+export const LoginForm: FC<LoginProps> = ({ userAuthentication, onSubmit }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -27,6 +27,7 @@ export const LoginForm: FC<LoginProps> = ({ userAuthentication }) => {
     validationSchema: LoginFormSchema,
     onSubmit: async (values: IUserAuthenticationData) => {
       await handleSubmit(values);
+      await onSubmit(values);
     },
   });
 
@@ -43,6 +44,7 @@ export const LoginForm: FC<LoginProps> = ({ userAuthentication }) => {
       <Box sx={form} component="form" onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
+          id="email"
           name="email"
           type="text"
           size="small"
@@ -55,6 +57,7 @@ export const LoginForm: FC<LoginProps> = ({ userAuthentication }) => {
         />
         <TextField
           fullWidth
+          id="password"
           name="password"
           type="password"
           size="small"
