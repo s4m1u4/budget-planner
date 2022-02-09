@@ -35,6 +35,12 @@ const renderWithStoreAndRouter = (initialEntries) => {
 };
 
 describe("Sign up page", () => {
+  it("make snapshot", () => {
+    const { baseElement } = renderWithStoreAndRouter(["/signup"]);
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   beforeEach(() => {
     renderWithStoreAndRouter(["/signup"]);
   });

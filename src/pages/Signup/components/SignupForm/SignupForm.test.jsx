@@ -34,7 +34,17 @@ const renderComponent = async () => {
   });
 };
 
-describe("Log in page", () => {
+describe("Sign un component", () => {
+  it("make snapshot", () => {
+    const { baseElement } = render(
+      <BrowserRouter>
+        <SignupForm onSubmit={onSubmit} userRegistration={userRegistration} />
+      </BrowserRouter>
+    );
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   beforeEach(async () => {
     await renderComponent();
   });
@@ -59,27 +69,27 @@ describe("Log in page", () => {
     it("a button 'Sing up'", () => {
       expect(getButtonSignUp()).toBeInTheDocument();
     });
-  });
 
-  it("should render error when input values are empty", async () => {
-    expect(screen.queryByText(/first name is required/i)).toBeNull();
-    expect(screen.queryByText(/last name is required/i)).toBeNull();
-    expect(screen.queryByText(/email is required/i)).toBeNull();
-    expect(screen.queryByText(/password is required/i)).toBeNull();
+    it("should render error when input values are empty", async () => {
+      expect(screen.queryByText(/first name is required/i)).toBeNull();
+      expect(screen.queryByText(/last name is required/i)).toBeNull();
+      expect(screen.queryByText(/email is required/i)).toBeNull();
+      expect(screen.queryByText(/password is required/i)).toBeNull();
 
-    userEvent.type(getInputFisrtName(), "");
-    userEvent.type(getInputLastName(), "");
-    userEvent.type(getInputEmail(), "");
-    userEvent.type(getInputPassword(), "");
+      userEvent.type(getInputFisrtName(), "");
+      userEvent.type(getInputLastName(), "");
+      userEvent.type(getInputEmail(), "");
+      userEvent.type(getInputPassword(), "");
 
-    userEvent.click(getButtonSignUp());
+      userEvent.click(getButtonSignUp());
 
-    await renderComponent();
+      await renderComponent();
 
-    expect(screen.getByText(/first name is required/i)).toBeInTheDocument();
-    expect(screen.getByText(/last name is required/i)).toBeInTheDocument();
-    expect(screen.getByText(/email is required/i)).toBeInTheDocument();
-    expect(screen.getByText(/password is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/first name is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/last name is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/email is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/password is required/i)).toBeInTheDocument();
+    });
   });
 
   it("successful form submission", async () => {

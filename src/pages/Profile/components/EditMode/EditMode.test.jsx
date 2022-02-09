@@ -20,6 +20,15 @@ const userData = {
   email: "totalgol2015@gmail.com",
 };
 
+const getInputFirstName = () => screen.getByLabelText("First name");
+const getInputLastName = () => screen.getByLabelText("Last name");
+const getInputEmail = () => screen.getByLabelText("Email");
+const getButtonChangePassword = () =>
+  screen.getByRole("button", { name: /Change password/i });
+const getButtonEdit = () => screen.getByRole("button", { name: /Edit/i });
+const getButtonSave = () => screen.getByRole("button", { name: /Save/i });
+const getButtonCancel = () => screen.getByRole("button", { name: /Cancel/i });
+
 const renderComponentWithEditMode = async () => {
   await act(
     async () =>
@@ -39,6 +48,21 @@ const renderComponentWithEditMode = async () => {
 
 describe("Edit mode component", () => {
   describe("regular mode", () => {
+    it("make snapshot", () => {
+      const { baseElement } = render(
+        <EditMode
+          onSubmit={onSubmit}
+          userData={userData}
+          navigate={navigate}
+          setUserData={setUserData}
+          setNewUserData={setNewUserData}
+          setNewPassword={setNewPassword}
+        />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
     beforeEach(() => {
       render(
         <EditMode
@@ -52,36 +76,40 @@ describe("Edit mode component", () => {
       );
     });
 
-    it("should render an input with name='firstName'", () => {
-      expect(getInputFirstName()).toHaveAttribute("name", "firstName");
+    describe("should render", () => {
+      it("an input with name='firstName'", () => {
+        expect(getInputFirstName()).toHaveAttribute("name", "firstName");
+      });
+
+      it("an input with name='lastName'", () => {
+        expect(getInputLastName()).toHaveAttribute("name", "lastName");
+      });
+
+      it("an input with name='email'", () => {
+        expect(getInputEmail()).toHaveAttribute("name", "email");
+      });
+
+      it('a button "Change password"', () => {
+        expect(getButtonChangePassword()).toBeInTheDocument();
+      });
+
+      it('a button "Edit"', () => {
+        expect(getButtonEdit()).toBeInTheDocument();
+      });
     });
 
-    it("should render an input with name='lastName'", () => {
-      expect(getInputLastName()).toHaveAttribute("name", "lastName");
-    });
+    describe('modal "Create a new password"', () => {
+      it("should open", () => {
+        userEvent.click(getButtonChangePassword());
+        expect(screen.getByText("Create a new password")).toBeInTheDocument();
+      });
 
-    it("should render an input with name='email'", () => {
-      expect(getInputEmail()).toHaveAttribute("name", "email");
-    });
-
-    it('should render a button "Change password"', () => {
-      expect(getButtonChangePassword()).toBeInTheDocument();
-    });
-
-    it('should render a button "Edit"', () => {
-      expect(getButtonEdit()).toBeInTheDocument();
-    });
-
-    it('should open a modal "Create a new password"', () => {
-      userEvent.click(getButtonChangePassword());
-      expect(screen.getByText("Create a new password")).toBeInTheDocument();
-    });
-
-    it('should close a modal "Create a new password"', () => {
-      userEvent.click(getButtonChangePassword());
-      expect(screen.getByText("Create a new password")).toBeInTheDocument();
-      userEvent.click(getButtonCancel());
-      expect(screen.queryByText("Create a new password")).toBeNull();
+      it("should close", () => {
+        userEvent.click(getButtonChangePassword());
+        expect(screen.getByText("Create a new password")).toBeInTheDocument();
+        userEvent.click(getButtonCancel());
+        expect(screen.queryByText("Create a new password")).toBeNull();
+      });
     });
 
     it("should go to page 'Edit mode'", () => {
@@ -102,6 +130,22 @@ describe("Edit mode component", () => {
   });
 
   describe("edit mode", () => {
+    it("make snapshot", () => {
+      const { baseElement } = render(
+        <EditMode
+          onSubmit={onSubmit}
+          editMode={editMode}
+          userData={userData}
+          navigate={navigate}
+          setUserData={setUserData}
+          setNewUserData={setNewUserData}
+          setNewPassword={setNewPassword}
+        />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
     beforeEach(() => {
       render(
         <EditMode
@@ -116,26 +160,28 @@ describe("Edit mode component", () => {
       );
     });
 
-    it('should render a button "Change password"', () => {
-      expect(getButtonSave()).toBeInTheDocument();
-    });
+    describe("should render", () => {
+      it('a button "Change password"', () => {
+        expect(getButtonSave()).toBeInTheDocument();
+      });
 
-    it('should render a button "Cancel"', () => {
-      expect(getButtonCancel()).toBeInTheDocument();
-    });
+      it('a button "Cancel"', () => {
+        expect(getButtonCancel()).toBeInTheDocument();
+      });
 
-    it("should render error message when submitting a form with empty inputs", async () => {
-      expect(screen.queryByText("First name is required")).toBeNull();
-      expect(screen.queryByText("Last name is required")).toBeNull();
-      expect(screen.queryByText("Email is required")).toBeNull();
-      fireEvent.change(getInputFirstName(), { target: { value: "" } });
-      fireEvent.change(getInputLastName(), { target: { value: "" } });
-      fireEvent.change(getInputEmail(), { target: { value: "" } });
-      fireEvent.click(getButtonSave());
-      await renderComponentWithEditMode();
-      expect(screen.getByText("First name is required")).toBeInTheDocument();
-      expect(screen.getByText("Last name is required")).toBeInTheDocument();
-      expect(screen.getByText("Email is required")).toBeInTheDocument();
+      it("error message when submitting a form with empty inputs", async () => {
+        expect(screen.queryByText("First name is required")).toBeNull();
+        expect(screen.queryByText("Last name is required")).toBeNull();
+        expect(screen.queryByText("Email is required")).toBeNull();
+        fireEvent.change(getInputFirstName(), { target: { value: "" } });
+        fireEvent.change(getInputLastName(), { target: { value: "" } });
+        fireEvent.change(getInputEmail(), { target: { value: "" } });
+        fireEvent.click(getButtonSave());
+        await renderComponentWithEditMode();
+        expect(screen.getByText("First name is required")).toBeInTheDocument();
+        expect(screen.getByText("Last name is required")).toBeInTheDocument();
+        expect(screen.getByText("Email is required")).toBeInTheDocument();
+      });
     });
 
     it("should go to page 'Regular mode'", () => {
@@ -176,12 +222,3 @@ describe("Edit mode component", () => {
     });
   });
 });
-
-const getInputFirstName = () => screen.getByLabelText("First name");
-const getInputLastName = () => screen.getByLabelText("Last name");
-const getInputEmail = () => screen.getByLabelText("Email");
-const getButtonChangePassword = () =>
-  screen.getByRole("button", { name: /Change password/i });
-const getButtonEdit = () => screen.getByRole("button", { name: /Edit/i });
-const getButtonSave = () => screen.getByRole("button", { name: /Save/i });
-const getButtonCancel = () => screen.getByRole("button", { name: /Cancel/i });

@@ -6,6 +6,19 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
+const getTitle = () =>
+  screen.getByRole("heading", {
+    name: /sign in/i,
+  });
+const getLinkToSignUp = () =>
+  screen.getByRole("link", {
+    name: /create an account/i,
+  });
+const getButtonSignUp = () =>
+  screen.queryByRole("button", {
+    name: /sign up/i,
+  });
+
 const renderWithStoreAndRouter = (initialEntries) => {
   const rootStore = new RootStore();
 
@@ -22,6 +35,12 @@ const renderWithStoreAndRouter = (initialEntries) => {
 };
 
 describe("Log in page", () => {
+  it("make snapshot", () => {
+    const { baseElement } = renderWithStoreAndRouter(["/login"]);
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   beforeEach(() => {
     renderWithStoreAndRouter(["/login"]);
   });
@@ -42,16 +61,3 @@ describe("Log in page", () => {
     expect(getButtonSignUp()).toBeInTheDocument();
   });
 });
-
-const getTitle = () =>
-  screen.getByRole("heading", {
-    name: /sign in/i,
-  });
-const getLinkToSignUp = () =>
-  screen.getByRole("link", {
-    name: /create an account/i,
-  });
-const getButtonSignUp = () =>
-  screen.queryByRole("button", {
-    name: /sign up/i,
-  });
