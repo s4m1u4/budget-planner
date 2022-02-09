@@ -6,6 +6,16 @@ import userEvent from "@testing-library/user-event";
 const onSubmit = jest.fn();
 const userAuthentication = jest.fn();
 
+const getInputEmail = () =>
+  screen.getByRole("textbox", {
+    name: /email/i,
+  });
+const getInputPassword = () => screen.getByLabelText(/password/i);
+const getButtonSignIn = () =>
+  screen.getByRole("button", {
+    name: /sign in/i,
+  });
+
 const renderComponent = async () => {
   await act(async () => {
     await render(
@@ -19,7 +29,20 @@ const renderComponent = async () => {
   });
 };
 
-describe("Log in page", () => {
+describe("Log in form component", () => {
+  it("make snapshot", async () => {
+    const { baseElement } = render(
+      <BrowserRouter>
+        <LoginForm
+          onSubmit={onSubmit}
+          userAuthentication={userAuthentication}
+        />
+      </BrowserRouter>
+    );
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   beforeEach(async () => {
     await renderComponent();
   });
@@ -36,21 +59,21 @@ describe("Log in page", () => {
     it("a button 'Sing in'", () => {
       expect(getButtonSignIn()).toBeInTheDocument();
     });
-  });
 
-  it("should render error when input values are empty", async () => {
-    expect(screen.queryByText(/email is required/i)).toBeNull();
-    expect(screen.queryByText(/password is required/i)).toBeNull();
+    it("error when input values are empty", async () => {
+      expect(screen.queryByText(/email is required/i)).toBeNull();
+      expect(screen.queryByText(/password is required/i)).toBeNull();
 
-    userEvent.type(getInputEmail(), "");
-    userEvent.type(getInputPassword(), "");
+      userEvent.type(getInputEmail(), "");
+      userEvent.type(getInputPassword(), "");
 
-    userEvent.click(getButtonSignIn());
+      userEvent.click(getButtonSignIn());
 
-    await renderComponent();
+      await renderComponent();
 
-    expect(screen.getByText(/email is required/i)).toBeInTheDocument();
-    expect(screen.getByText(/password is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/email is required/i)).toBeInTheDocument();
+      expect(screen.getByText(/password is required/i)).toBeInTheDocument();
+    });
   });
 
   it("successful form submission", async () => {
@@ -69,13 +92,3 @@ describe("Log in page", () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 });
-
-const getInputEmail = () =>
-  screen.getByRole("textbox", {
-    name: /email/i,
-  });
-const getInputPassword = () => screen.getByLabelText(/password/i);
-const getButtonSignIn = () =>
-  screen.getByRole("button", {
-    name: /sign in/i,
-  });

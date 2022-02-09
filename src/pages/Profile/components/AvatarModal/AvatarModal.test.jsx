@@ -15,6 +15,11 @@ const setUserData = jest.fn();
 const getUserData = jest.fn();
 const setNewAvatar = jest.fn();
 
+const getTitle = () => screen.getByText(/Set a new avatar/i);
+const getInputAvatar = () => screen.getByRole("textbox");
+const getButtonChange = () => screen.getByRole("button", { name: /Change/i });
+const getButtonCancel = () => screen.getByRole("button", { name: /Cancel/i });
+
 const renderComponent = async () => {
   await act(
     async () =>
@@ -32,6 +37,21 @@ const renderComponent = async () => {
 };
 
 describe("Avatar modal component", () => {
+  it("make snapshot", () => {
+    const { baseElement } = render(
+      <AvatarModal
+        open={open}
+        setNewAvatar={setNewAvatar}
+        handleClose={handleClose}
+        onSubmit={onSubmit}
+        getUserData={getUserData}
+        setUserData={setUserData}
+      />
+    );
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
   beforeEach(() => {
     render(
       <AvatarModal
@@ -45,35 +65,37 @@ describe("Avatar modal component", () => {
     );
   });
 
-  it("should render a title", () => {
-    expect(getTitle()).toBeInTheDocument();
-  });
+  describe("should render", () => {
+    it("a title", () => {
+      expect(getTitle()).toBeInTheDocument();
+    });
 
-  it("should render an input with name='avatar'", () => {
-    expect(getInputAvatar()).toHaveAttribute("name", "avatar");
-  });
+    it("an input with name='avatar'", () => {
+      expect(getInputAvatar()).toHaveAttribute("name", "avatar");
+    });
 
-  it('should render a button "Change', () => {
-    expect(getButtonChange()).toBeInTheDocument();
-  });
+    it('a button "Change', () => {
+      expect(getButtonChange()).toBeInTheDocument();
+    });
 
-  it('should render a button "Cancel', () => {
-    expect(getButtonCancel()).toBeInTheDocument();
-  });
+    it('a button "Cancel', () => {
+      expect(getButtonCancel()).toBeInTheDocument();
+    });
 
-  it("should render error message when input value is empty and focus disappeared", async () => {
-    expect(screen.queryByText(/Avatar is requred/i)).toBeNull();
-    fireEvent.focus(getInputAvatar());
-    fireEvent.blur(getInputAvatar());
-    await renderComponent();
-    expect(screen.getByText(/Avatar is required/i)).toBeInTheDocument();
-  });
+    it("error message when input value is empty and focus disappeared", async () => {
+      expect(screen.queryByText(/Avatar is requred/i)).toBeNull();
+      fireEvent.focus(getInputAvatar());
+      fireEvent.blur(getInputAvatar());
+      await renderComponent();
+      expect(screen.getByText(/Avatar is required/i)).toBeInTheDocument();
+    });
 
-  it("should render error message when submitting a form with empty input", async () => {
-    expect(screen.queryByText(/Avatar is requred/i)).toBeNull();
-    fireEvent.click(getButtonChange());
-    await renderComponent();
-    expect(screen.getByText(/Avatar is required/i)).toBeInTheDocument();
+    it("error message when submitting a form with empty input", async () => {
+      expect(screen.queryByText(/Avatar is requred/i)).toBeNull();
+      fireEvent.click(getButtonChange());
+      await renderComponent();
+      expect(screen.getByText(/Avatar is required/i)).toBeInTheDocument();
+    });
   });
 
   it("successful form submission", async () => {
@@ -95,8 +117,3 @@ describe("Avatar modal component", () => {
     expect(getInputAvatar()).toHaveValue("");
   });
 });
-
-const getTitle = () => screen.getByText(/Set a new avatar/i);
-const getInputAvatar = () => screen.getByRole("textbox");
-const getButtonChange = () => screen.getByRole("button", { name: /Change/i });
-const getButtonCancel = () => screen.getByRole("button", { name: /Cancel/i });
