@@ -63,6 +63,7 @@ export const RecordsSection: FC<RecordsSectionProps> = ({
           sx={{ padding: 0, marginRight: "10px" }}
           size="small"
           onClick={handleOpen}
+          data-modal="data-delete"
           disabled={!Boolean(records.length)}
         >
           <DeleteForeverRoundedIcon />
