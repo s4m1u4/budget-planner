@@ -1,17 +1,18 @@
-import { Dashboard } from "../Dashboard";
+import { Records } from "../Records";
 import { act, render, screen } from "@testing-library/react";
 import { CATEGORIES, HISTORIES } from "./__mock__";
 
 const renderComponent = () => {
   return render(
-    <Dashboard
-      histories={HISTORIES}
+    <Records
+      limit={10000}
       categories={CATEGORIES}
+      histories={HISTORIES}
       getHistories={getHistories}
-      setNewHistory={setNewHistory}
+      deleteHistory={deleteHistory}
       getCategories={getCategories}
-      setNewCategory={setNewCategory}
-      deleteCategory={deleteCategory}
+      deleteAllHistories={deleteAllHistories}
+      getFilteredHistories={getFilteredHistories}
     />
   );
 };
@@ -19,26 +20,27 @@ const renderComponent = () => {
 const renderComponentAsync = async () => {
   await act(async () => {
     await render(
-      <Dashboard
-        histories={HISTORIES}
+      <Records
+        limit={10000}
         categories={CATEGORIES}
+        histories={HISTORIES}
         getHistories={getHistories}
-        setNewHistory={setNewHistory}
+        deleteHistory={deleteHistory}
         getCategories={getCategories}
-        setNewCategory={setNewCategory}
-        deleteCategory={deleteCategory}
+        deleteAllHistories={deleteAllHistories}
+        getFilteredHistories={getFilteredHistories}
       />
     );
   });
 };
 
 const getHistories = jest.fn();
-const setNewHistory = jest.fn();
+const deleteHistory = jest.fn();
 const getCategories = jest.fn();
-const setNewCategory = jest.fn();
-const deleteCategory = jest.fn();
+const deleteAllHistories = jest.fn();
+const getFilteredHistories = jest.fn();
 
-describe("Dashboard page", () => {
+describe("Records page", () => {
   it("snapshot matching", async () => {
     await act(async () => {
       const { baseElement } = await renderComponent();
@@ -52,7 +54,7 @@ describe("Dashboard page", () => {
     });
 
     it("a title", () => {
-      expect(screen.getByText(/dashboard page/i)).toBeInTheDocument();
+      expect(screen.getByText(/records page/i)).toBeInTheDocument();
     });
   });
 });
