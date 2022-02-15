@@ -34,6 +34,7 @@ export const Records: FC<RecordsProps> = ({
         <SectionTitle>Last records</SectionTitle>
         <IconButton
           size="small"
+          data-modal="modal"
           onClick={handleOpen}
           sx={{ padding: "0" }}
           disabled={!categories.length}
@@ -50,6 +51,7 @@ export const Records: FC<RecordsProps> = ({
       </SectionFooter>
       <RecordsForm
         open={isOpenModal}
+        onSubmit={(values) => values}
         categories={categories}
         handleClose={handleClose}
         setNewHistory={setNewHistory}

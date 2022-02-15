@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecordList component snapshot matching 1`] = `
+<body>
+  <div>
+    <div
+      class="css-7wb1st"
+    >
+      <div
+        class="css-gg4vpm"
+      >
+        <p
+          class="css-0"
+        >
+          income
+           from 
+        </p>
+        <span
+          class="css-81iyw9"
+          color="income"
+        >
+          +$2,354.00
+        </span>
+      </div>
+      <div
+        class="css-gg4vpm"
+      >
+        <p
+          class="css-0"
+        >
+          income
+           from 
+        </p>
+        <span
+          class="css-81iyw9"
+          color="income"
+        >
+          +$836.00
+        </span>
+      </div>
+      <div
+        class="css-gg4vpm"
+      >
+        <p
+          class="css-0"
+        >
+          income
+           from 
+        </p>
+        <span
+          class="css-81iyw9"
+          color="income"
+        >
+          +$2,454.00
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+`;

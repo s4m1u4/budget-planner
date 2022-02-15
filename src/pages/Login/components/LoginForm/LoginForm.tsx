@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
@@ -11,6 +11,12 @@ import { boxForm, boxInfo, form, title } from "./LoginForm.styles";
 export const LoginForm: FC<LoginProps> = ({ userAuthentication, onSubmit }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  useEffect(() => {
+    return () => {
+      setErrorMessage("");
+    };
+  }, []);
 
   const handleSubmit = async (values: IUserAuthenticationData) => {
     const response: string | void = await userAuthentication(values);

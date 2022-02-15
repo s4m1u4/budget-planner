@@ -62,13 +62,15 @@ export const Charts: FC<ChartsProps> = ({
           <IconButton
             size="small"
             sx={{ padding: "0" }}
+            data-modal="modal-create"
             onClick={handleOpenCreate}
           >
             <AddCircleOutlineSharpIcon />
           </IconButton>
           <IconButton
-            sx={{ padding: 0 }}
             size="small"
+            sx={{ padding: 0 }}
+            data-modal="modal-delete"
             onClick={handleOpenDelete}
             disabled={!Boolean(categories.length)}
           >
@@ -84,11 +86,13 @@ export const Charts: FC<ChartsProps> = ({
       </SectionBody>
       <ChartsForm
         open={isOpenModalCreate}
+        onSubmit={(values) => values}
         handleClose={handleCloseCreate}
         setNewCategory={setNewCategory}
       />
       <ChartsModal
         open={isOpenModalDelete}
+        onSubmit={(values) => values}
         handleClose={handleCloseDelete}
         categories={categories}
         deleteCategory={deleteCategory}

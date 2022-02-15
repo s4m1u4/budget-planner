@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overview component snapshot matching 1`] = `
+<body>
+  <div>
+    <div
+      class="css-1a8z9k1"
+    >
+      <div
+        class="css-13o2qpx"
+      >
+        <h3
+          class="css-1xqtn9i"
+        >
+          Overview
+        </h3>
+      </div>
+      <div
+        class="css-1gk4ta0"
+      >
+        <div
+          class="css-gg4vpm"
+        >
+          <p
+            class="css-15v0w87"
+          >
+            Amount:
+          </p>
+          <span
+            class="css-15v0w87"
+          >
+            $5,644.00
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

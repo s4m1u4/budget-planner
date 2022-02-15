@@ -32,11 +32,15 @@ export const Dashboard: FC<DashboardProps> = ({
 
   useEffect(() => {
     fetchData();
+
+    return () => {
+      setIsLoading(false);
+    };
   }, [fetchData]);
 
   const records: IRecord[] = calculateRecords(histories, categories);
 
-  const lastRecords: IRecord[] = records.slice(-5);
+  const lastRecords: IRecord[] = records.slice(-5).reverse();
 
   return (
     <Container>

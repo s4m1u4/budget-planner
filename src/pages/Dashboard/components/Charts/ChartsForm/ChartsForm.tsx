@@ -9,12 +9,14 @@ import { ButtonGroup, Form, Title } from "./ChartsForm.styles";
 
 interface ChartsFormProps {
   open: boolean;
+  onSubmit: (values: ICategoryData) => void;
   handleClose: () => void;
   setNewCategory: (categoryData: ICategoryData) => void;
 }
 
 export const ChartsForm: FC<ChartsFormProps> = ({
   open,
+  onSubmit,
   handleClose,
   setNewCategory,
 }) => {
@@ -30,6 +32,7 @@ export const ChartsForm: FC<ChartsFormProps> = ({
     validationSchema: ChartsFormSchema,
     onSubmit: async (values: ICategoryData) => {
       await handleSubmit(values);
+      await onSubmit(values);
       formik.resetForm();
       handleClose();
     },

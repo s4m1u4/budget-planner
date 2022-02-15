@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Records component with empty records snapshot matching 1`] = `
+<body>
+  <div>
+    <div
+      class="css-sai3sf"
+    >
+      <div
+        class="css-13o2qpx"
+      >
+        <h3
+          class="css-1xqtn9i"
+        >
+          Last records
+        </h3>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1mgsdk9-MuiButtonBase-root-MuiIconButton-root"
+          data-modal="modal"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="AddCircleOutlineSharpIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="css-1gk4ta0"
+      >
+        <p>
+          Records list is empty😔
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Records component with list of records snapshot matching 1`] = `
+<body>
+  <div>
+    <div
+      class="css-sai3sf"
+    >
+      <div
+        class="css-13o2qpx"
+      >
+        <h3
+          class="css-1xqtn9i"
+        >
+          Last records
+        </h3>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1mgsdk9-MuiButtonBase-root-MuiIconButton-root"
+          data-modal="modal"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="AddCircleOutlineSharpIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+            />
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="css-1gk4ta0"
+      >
+        <div
+          class="css-7wb1st"
+        >
+          <div
+            class="css-gg4vpm"
+          >
+            <p
+              class="css-0"
+            >
+              income
+               from 
+            </p>
+            <span
+              class="css-81iyw9"
+              color="income"
+            >
+              +$2,354.00
+            </span>
+          </div>
+          <div
+            class="css-gg4vpm"
+          >
+            <p
+              class="css-0"
+            >
+              income
+               from 
+            </p>
+            <span
+              class="css-81iyw9"
+              color="income"
+            >
+              +$836.00
+            </span>
+          </div>
+          <div
+            class="css-gg4vpm"
+          >
+            <p
+              class="css-0"
+            >
+              income
+               from 
+            </p>
+            <span
+              class="css-81iyw9"
+              color="income"
+            >
+              +$2,454.00
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
