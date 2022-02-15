@@ -9,6 +9,7 @@ import { ButtonGroup, Title } from "./ChartsModal.styles";
 
 interface ChartsModalProps {
   open: boolean;
+  onSubmit: (values: IValuesData) => void;
   handleClose: () => void;
   categories: ICategory[];
   deleteCategory: (id: string) => void;
@@ -20,6 +21,7 @@ interface IValuesData {
 
 export const ChartsModal: FC<ChartsModalProps> = ({
   open,
+  onSubmit,
   handleClose,
   categories,
   deleteCategory,
@@ -27,6 +29,7 @@ export const ChartsModal: FC<ChartsModalProps> = ({
   const handleSubmit = async (values: IValuesData) => {
     formik.resetForm();
     await deleteCategory(values.id);
+    await onSubmit(values);
     handleClose();
   };
 

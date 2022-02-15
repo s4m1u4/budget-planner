@@ -63,6 +63,7 @@ export const ChartsPie: FC<ChartsPieProps> = ({ title, data }) => {
       <ResponsiveContainer width="99%" height={300}>
         <PieChart>
           <Pie
+            className="test"
             data={data}
             cx="50%"
             cy="50%"

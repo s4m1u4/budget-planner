@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartsPie component snapshot matching 1`] = `
+<body>
+  <div>
+    <div>
+      <h4
+        class="css-sqlmve"
+      >
+        Income
+      </h4>
+      <div
+        class="recharts-responsive-container"
+        style="width: 99%; height: 300px;"
+      />
+    </div>
+  </div>
+</body>
+`;

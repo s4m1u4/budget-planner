@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar modal component snapshot matching 1`] = `
+<body
+  style="padding-right: 1024px; overflow: hidden;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    aria-hidden="true"
+    class="MuiModal-root css-79ws1d-MuiModal-root"
+    role="presentation"
+  >
+    <div
+      aria-hidden="true"
+      class="MuiBackdrop-root css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop"
+      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    />
+    <div
+      data-test="sentinelStart"
+      tabindex="0"
+    />
+    <div
+      class="css-5fyqun"
+      tabindex="-1"
+    >
+      <h3
+        class="css-ngqp4j"
+      >
+        Set a new avatar
+      </h3>
+      <form>
+        <div
+          class="css-acwcvw"
+        >
+          <label
+            class="css-zkehil"
+          >
+            Link to avatar
+          </label>
+          <input
+            class="css-1pabijg"
+            name="avatar"
+            type="text"
+            value=""
+          />
+          <p
+            class="css-1ghz2lr"
+          />
+        </div>
+        <div
+          class="css-awol2u"
+        >
+          <button
+            class="css-1p4hstr"
+            color="success"
+            type="submit"
+          >
+            Change
+          </button>
+          <button
+            class="css-egajlx"
+            color="error"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+      data-test="sentinelEnd"
+      tabindex="0"
+    />
+  </div>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="MuiModal-root css-79ws1d-MuiModal-root"
+    role="presentation"
+  >
+    <div
+      aria-hidden="true"
+      class="MuiBackdrop-root css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop"
+      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    />
+    <div
+      data-test="sentinelStart"
+      tabindex="0"
+    />
+    <div
+      class="css-5fyqun"
+      tabindex="-1"
+    >
+      <h3
+        class="css-ngqp4j"
+      >
+        Set a new avatar
+      </h3>
+      <form>
+        <div
+          class="css-acwcvw"
+        >
+          <label
+            class="css-zkehil"
+          >
+            Link to avatar
+          </label>
+          <input
+            class="css-1pabijg"
+            name="avatar"
+            type="text"
+            value=""
+          />
+          <p
+            class="css-1ghz2lr"
+          />
+        </div>
+        <div
+          class="css-awol2u"
+        >
+          <button
+            class="css-1p4hstr"
+            color="success"
+            type="submit"
+          >
+            Change
+          </button>
+          <button
+            class="css-egajlx"
+            color="error"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+      data-test="sentinelEnd"
+      tabindex="0"
+    />
+  </div>
+</body>
+`;

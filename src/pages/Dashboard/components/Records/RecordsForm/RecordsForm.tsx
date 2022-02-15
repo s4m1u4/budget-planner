@@ -10,6 +10,7 @@ import { ButtonGroup, Form, Title } from "./RecordsForm.styles";
 
 interface RecordsFormProps {
   open: boolean;
+  onSubmit: (values: IHistoryData) => void;
   categories: ICategory[];
   handleClose: () => void;
   setNewHistory: (historyData: IHistoryData) => void;
@@ -17,12 +18,14 @@ interface RecordsFormProps {
 
 export const RecordsForm: FC<RecordsFormProps> = ({
   open,
+  onSubmit,
   categories,
   handleClose,
   setNewHistory,
 }) => {
   const handleSubmit = async (values: IHistoryData) => {
     await setNewHistory(values);
+    await onSubmit(values);
   };
 
   const formik = useFormik({
