@@ -17,7 +17,7 @@ export const NotFound = () => {
           component={Link}
           className={"btn"}
           variant="contained"
-          sx={{ marginTop: "15px" }}
+          sx={{ color: "#fff", marginTop: "15px" }}
         >
           Come back
         </Button>

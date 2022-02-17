@@ -1,7 +1,7 @@
 import React, { FC, ReactChild, ReactNode } from "react";
-import { Modal } from "@mui/material";
+import { Box, Modal } from "@mui/material";
 
-import { ModalWrapper } from "./ModalComponent.styles";
+import { style } from "./ModalComponent.styles";
 
 interface ModalComponentProps {
   open: boolean;
@@ -16,7 +16,7 @@ export const ModalComponent: FC<ModalComponentProps> = ({
 }) => {
   return (
     <Modal open={open} onClose={onClose}>
-      <ModalWrapper>{children}</ModalWrapper>
+      <Box sx={style}>{children}</Box>
     </Modal>
   );
 };

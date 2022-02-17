@@ -92,10 +92,20 @@ export const RecordsForm: FC<RecordsFormProps> = ({
           ))}
         </TextField>
         <ButtonGroup>
-          <Button variant="contained" color="success" type="submit">
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="success"
+            type="submit"
+          >
             Add record
           </Button>
-          <Button variant="contained" color="error" onClick={handleClose}>
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="error"
+            onClick={handleClose}
+          >
             Close
           </Button>
         </ButtonGroup>

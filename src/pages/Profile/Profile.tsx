@@ -6,6 +6,7 @@ import {
   CircularProgress,
   Container,
   IconButton,
+  Skeleton,
   Tooltip,
 } from "@mui/material";
 import { ProfileProps, ProfileState } from "./types";
@@ -68,23 +69,27 @@ class Profile extends Component<ProfileProps, ProfileState> {
             handleClose={this.handleClose}
             onSubmit={(values) => values}
           />
-          <Tooltip title="Change avatar" arrow placement="right-end">
-            <IconButton
-              onClick={this.handleOpen}
-              sx={{ padding: "0", marginBottom: "15px" }}
-            >
-              <Avatar
-                sx={{
-                  width: "200px",
-                  height: "200px",
-                }}
-                alt={`${userData.firstName && userData.firstName} ${
-                  userData.lastName && userData.lastName
-                }`}
-                src={userData.avatar}
-              />
-            </IconButton>
-          </Tooltip>
+          {isLoading ? (
+            <Skeleton variant="circular" width={200} height={200} />
+          ) : (
+            <Tooltip title="Change avatar" arrow placement="right-end">
+              <IconButton
+                onClick={this.handleOpen}
+                sx={{ padding: "0", marginBottom: "15px" }}
+              >
+                <Avatar
+                  sx={{
+                    width: "200px",
+                    height: "200px",
+                  }}
+                  alt={`${userData.firstName && userData.firstName} ${
+                    userData.lastName && userData.lastName
+                  }`}
+                  src={userData.avatar}
+                />
+              </IconButton>
+            </Tooltip>
+          )}
           {isLoading ? (
             <ProgressBox>
               <CircularProgress />

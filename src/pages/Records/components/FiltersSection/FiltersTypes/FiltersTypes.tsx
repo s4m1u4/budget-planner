@@ -30,6 +30,10 @@ export const FiltersTypes: FC<FiltersTypesProps> = ({
       sx={{
         margin: "0",
         boxShadow: "none",
+        "&.MuiPaper-root": {
+          backgroundColor: "transparent",
+          backgroundImage: "unset",
+        },
         "&.Mui-expanded": { margin: "0" },
         "&::before": { backgroundColor: "transparent" },
         "&.Mui-disabled": { backgroundColor: "transparent" },

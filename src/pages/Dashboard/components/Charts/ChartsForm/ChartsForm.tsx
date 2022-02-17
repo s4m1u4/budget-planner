@@ -65,10 +65,20 @@ export const ChartsForm: FC<ChartsFormProps> = ({
           helperText={formik.touched.description && formik.errors.description}
         />
         <ButtonGroup>
-          <Button variant="contained" color="success" type="submit">
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="success"
+            type="submit"
+          >
             Add category
           </Button>
-          <Button variant="contained" color="error" onClick={handleClose}>
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="error"
+            onClick={handleClose}
+          >
             Close
           </Button>
         </ButtonGroup>
