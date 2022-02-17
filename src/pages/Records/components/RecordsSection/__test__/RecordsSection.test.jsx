@@ -55,7 +55,6 @@ describe("Records section component", () => {
     });
 
     it("a title", () => {
-      screen.debug();
       expect(screen.getByText(/records/i)).toBeInTheDocument();
     });
   });

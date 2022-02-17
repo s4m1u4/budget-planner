@@ -43,9 +43,13 @@ export const ChartsPie: FC<ChartsPieProps> = ({ title, data }) => {
       return (
         <div
           style={{
+            color:
+              sessionStorage.getItem("theme") === "light" ? "#000" : "#fff",
             padding: "5px",
-            backgroundColor: "#fff",
+            backgroundColor:
+              sessionStorage.getItem("theme") === "light" ? "#fff" : "#303030",
             border: "1px solid #cccc",
+            borderRadius: "6px",
           }}
         >
           <p>{`${payload[0].name} - ${currency(amount).format()}`}</p>

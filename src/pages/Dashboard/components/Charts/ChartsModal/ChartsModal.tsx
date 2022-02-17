@@ -65,10 +65,20 @@ export const ChartsModal: FC<ChartsModalProps> = ({
           ))}
         </TextField>
         <ButtonGroup>
-          <Button variant="contained" color="error" type="submit">
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="error"
+            type="submit"
+          >
             Delete category
           </Button>
-          <Button variant="contained" color="primary" onClick={handleClose}>
+          <Button
+            sx={{ color: "#fff" }}
+            variant="contained"
+            color="primary"
+            onClick={handleClose}
+          >
             Close
           </Button>
         </ButtonGroup>

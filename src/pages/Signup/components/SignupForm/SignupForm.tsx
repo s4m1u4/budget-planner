@@ -91,7 +91,12 @@ export const SignupForm: FC<SignupProps> = ({ onSubmit, userRegistration }) => {
           error={formik.touched.password && !!formik.errors.password}
           helperText={formik.touched.password && formik.errors.password}
         />
-        <Button variant="contained" color="success" type="submit">
+        <Button
+          sx={{ color: "#fff" }}
+          variant="contained"
+          color="success"
+          type="submit"
+        >
           Sign up
         </Button>
       </Box>

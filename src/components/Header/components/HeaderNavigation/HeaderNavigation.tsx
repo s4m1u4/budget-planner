@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Box, Button } from "@mui/material";
+import { SwitchComponentContainer } from "../../../shared/SwitchComponent";
 
 export const HeaderNavigation: FC = () => {
   return (
@@ -11,6 +12,7 @@ export const HeaderNavigation: FC = () => {
       <Button color="inherit" component={Link} to="/records">
         Records
       </Button>
+      <SwitchComponentContainer />
     </Box>
   );
 };

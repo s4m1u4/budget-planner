@@ -11,6 +11,7 @@ import { IAvatarLink } from "../types/types";
 
 export interface IUserStore {
   api: IAPI;
+  theme: string | null;
   userData: IUserData;
   isAuth: boolean;
   isLoading: boolean;
@@ -23,6 +24,7 @@ export interface IUserStore {
   getUserData: () => void;
   setNewPassword: (passwordData: IPasswordData) => void;
   setNewAvatar: (avatar: IAvatarLink) => void;
+  setTheme: (theme: string | null) => void;
 }
 
 interface IUserAuthentication {
@@ -31,6 +33,7 @@ interface IUserAuthentication {
 
 export class UserStore implements IUserStore {
   api: IAPI;
+  theme: string | null = "light";
   userData: IUserData = {
     firstName: "",
     lastName: "",
@@ -46,6 +49,10 @@ export class UserStore implements IUserStore {
     makeAutoObservable(this);
     this.api = api;
   }
+
+  setTheme = (theme: string | null) => {
+    this.theme = theme;
+  };
 
   setUserData = (userData: IUserData) => {
     this.userData = userData;
@@ -130,7 +137,6 @@ export class UserStore implements IUserStore {
         email: "",
         budgetAmount: "",
       };
-
       return userData;
     }
   };

@@ -21,7 +21,7 @@ export const FiltersOptions: FC<FiltersOptionsProps> = ({
         fullWidth
         color="success"
         variant="contained"
-        sx={{ marginTop: "10px" }}
+        sx={{ color: "#fff", marginTop: "10px" }}
         disabled={!Boolean(filters.type) && !Boolean(filters.category)}
         onClick={handleClickSearch}
       >
@@ -31,7 +31,7 @@ export const FiltersOptions: FC<FiltersOptionsProps> = ({
         fullWidth
         color="error"
         variant="contained"
-        sx={{ marginTop: "10px" }}
+        sx={{ color: "#fff", marginTop: "10px" }}
         disabled={!Boolean(filters.type) && !Boolean(filters.category)}
         onClick={handleClickResetFilters}
       >

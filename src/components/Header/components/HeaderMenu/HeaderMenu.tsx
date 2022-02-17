@@ -16,6 +16,7 @@ export const HeaderMenu: FC<HeaderProps> = ({
   lastName,
   avatar,
   setIsAuth,
+  setTheme,
 }) => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<null | HTMLElement>(
     null
@@ -32,6 +33,8 @@ export const HeaderMenu: FC<HeaderProps> = ({
   const handlerSignOut = () => {
     setIsUserMenuOpen(null);
     clearToken();
+    sessionStorage.setItem("theme", "light");
+    setTheme("light");
     setIsAuth();
   };
 

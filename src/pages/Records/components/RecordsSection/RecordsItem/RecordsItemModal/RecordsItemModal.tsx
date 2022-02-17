@@ -35,13 +35,19 @@ export const RecordsItemModal: FC<RecordsItemModalProps> = ({
       </Payment>
       <ButtonGroup>
         <Button
+          sx={{ color: "#fff" }}
           variant="contained"
           color="error"
           onClick={() => handleDeleteRecord(record.id)}
         >
           Delete
         </Button>
-        <Button variant="contained" color="primary" onClick={handleClose}>
+        <Button
+          sx={{ color: "#fff" }}
+          variant="contained"
+          color="primary"
+          onClick={handleClose}
+        >
           Cancel
         </Button>
       </ButtonGroup>
