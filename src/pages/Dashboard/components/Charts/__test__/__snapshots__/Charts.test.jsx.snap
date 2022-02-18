@@ -19,6 +19,48 @@ exports[`Charts component snapshot matching 1`] = `
         >
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1mgsdk9-MuiButtonBase-root-MuiIconButton-root"
+            data-charts="charts-pie"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="PieChartIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1mgsdk9-MuiButtonBase-root-MuiIconButton-root"
+            data-charts="charts-bar"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="BarChartIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1mgsdk9-MuiButtonBase-root-MuiIconButton-root"
             data-modal="modal-create"
             tabindex="0"
             type="button"
@@ -65,31 +107,9 @@ exports[`Charts component snapshot matching 1`] = `
         class="css-1gk4ta0"
       >
         <div
-          class="css-ivrut9"
-        >
-          <div>
-            <h4
-              class="css-sqlmve"
-            >
-              Income
-            </h4>
-            <div
-              class="recharts-responsive-container"
-              style="width: 99%; height: 300px;"
-            />
-          </div>
-          <div>
-            <h4
-              class="css-sqlmve"
-            >
-              Expense
-            </h4>
-            <div
-              class="recharts-responsive-container"
-              style="width: 99%; height: 300px;"
-            />
-          </div>
-        </div>
+          class="recharts-responsive-container"
+          style="width: 99%; height: 330px;"
+        />
       </div>
     </div>
   </div>

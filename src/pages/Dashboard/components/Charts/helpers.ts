@@ -59,3 +59,33 @@ export const calculateDataExpense = (
     ),
   }));
 };
+
+export const calculateUniqueCategories = (
+  categoriesIncome: (string | undefined)[],
+  categoriesExpense: (string | undefined)[]
+) => {
+  const categories = [...categoriesIncome, ...categoriesExpense];
+
+  return categories.filter(
+    (category, index) => categories.indexOf(category) === index
+  );
+};
+
+export const calculateDataChartsBar = (
+  uniqueCategories: (string | undefined)[],
+  dataIncome: { name: string | undefined; value: number }[],
+  dataExpense: { name: string | undefined; value: number }[]
+) => {
+  return uniqueCategories.map((category) => {
+    const currentDataIncome = dataIncome.find((item) => item.name === category);
+    const currentDataExpense = dataExpense.find(
+      (item) => item.name === category
+    );
+
+    return {
+      name: category,
+      income: currentDataIncome ? currentDataIncome.value : null,
+      expense: currentDataExpense ? currentDataExpense.value * -1 : null,
+    };
+  });
+};

@@ -22,7 +22,7 @@ exports[`Avatar modal component snapshot matching 1`] = `
       tabindex="0"
     />
     <div
-      class="css-5fyqun"
+      class="MuiBox-root css-5fyqun"
       tabindex="-1"
     >
       <h3
@@ -91,7 +91,7 @@ exports[`Avatar modal component snapshot matching 1`] = `
       tabindex="0"
     />
     <div
-      class="css-5fyqun"
+      class="MuiBox-root css-5fyqun"
       tabindex="-1"
     >
       <h3

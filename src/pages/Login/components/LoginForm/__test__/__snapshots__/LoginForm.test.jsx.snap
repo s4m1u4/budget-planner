@@ -87,7 +87,7 @@ exports[`Log in form component snapshot matching 1`] = `
           </div>
         </div>
         <button
-          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-ke5b6m-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-wqakyb-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="submit"
         >
@@ -199,7 +199,7 @@ exports[`Log in form component snapshot matching 1`] = `
           </div>
         </div>
         <button
-          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-ke5b6m-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-wqakyb-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="submit"
         >

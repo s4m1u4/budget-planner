@@ -19,7 +19,7 @@ exports[`Not found page snapshot matching 1`] = `
           src="page-not-found.png"
         />
         <a
-          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root btn css-sj6h5v-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root btn css-1p7d25s-MuiButtonBase-root-MuiButton-root"
           href="/"
           tabindex="0"
         >
