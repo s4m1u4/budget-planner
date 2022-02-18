@@ -104,4 +104,28 @@ describe("Charts component", () => {
       ).not.toBeInTheDocument();
     });
   });
+
+  describe("render charts", () => {
+    it("on click button 'Charts pie'", () => {
+      const { container } = renderComponent();
+      const buttonPieCharts = container.querySelector(
+        '[data-charts="charts-pie"]'
+      );
+
+      userEvent.click(buttonPieCharts);
+
+      expect(screen.getByText(/income/i)).toBeInTheDocument();
+    });
+
+    it("on click button 'Charts bar'", () => {
+      const { container } = renderComponent();
+      const buttonPieCharts = container.querySelector(
+        '[data-charts="charts-bar"]'
+      );
+
+      userEvent.click(buttonPieCharts);
+
+      expect(screen.queryByText(/income/i)).not.toBeInTheDocument();
+    });
+  });
 });

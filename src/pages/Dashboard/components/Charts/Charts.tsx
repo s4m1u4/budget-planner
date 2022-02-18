@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ChartsPie } from "./ChartsPie";
+import { ChartsBar } from "./ChartsBar";
 import { ChartsForm } from "./ChartsForm";
 import { IconButton } from "@mui/material";
 import {
@@ -9,7 +10,11 @@ import {
   calculateRecordsExpense,
   calculateCategoriesIncome,
   calculateCategoriesExpense,
+  calculateUniqueCategories,
+  calculateDataChartsBar,
 } from "./helpers";
+import PieChartIcon from "@mui/icons-material/PieChart";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { ICategoryData } from "../../types";
@@ -38,6 +43,11 @@ export const Charts: FC<ChartsProps> = ({
   records,
   categories,
 }) => {
+  useEffect(() => {
+    setIsPieChart(sessionStorage.getItem("charts") === "pie" ? true : false);
+  }, []);
+
+  const [isPieChart, setIsPieChart] = useState<boolean>(true);
   const [isOpenModalCreate, setIsOpenModalCreate] = useState<boolean>(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState<boolean>(false);
   const handleOpenCreate = () => setIsOpenModalCreate(true);
@@ -54,11 +64,47 @@ export const Charts: FC<ChartsProps> = ({
   const dataIncome = calculateDataIncome(categoriesIncome, recordIncome);
   const dataExpense = calculateDataExpense(categoriesExpense, recordsExpense);
 
+  const uniqueCategories = calculateUniqueCategories(
+    categoriesIncome,
+    categoriesExpense
+  );
+  const dataChartsBar = calculateDataChartsBar(
+    uniqueCategories,
+    dataIncome,
+    dataExpense
+  );
+
+  const handleClickPieCharts = () => {
+    sessionStorage.setItem("charts", "pie");
+    setIsPieChart(true);
+  };
+
+  const handleClickBarCharts = () => {
+    sessionStorage.setItem("charts", "bar");
+    setIsPieChart(false);
+  };
+
   return (
     <Section area="charts">
       <SectionHeader>
         <SectionTitle>Charts</SectionTitle>
         <IconsGroup>
+          <IconButton
+            size="small"
+            sx={{ padding: "0" }}
+            data-charts="charts-pie"
+            onClick={handleClickPieCharts}
+          >
+            <PieChartIcon />
+          </IconButton>
+          <IconButton
+            size="small"
+            sx={{ padding: "0" }}
+            data-charts="charts-bar"
+            onClick={handleClickBarCharts}
+          >
+            <BarChartIcon />
+          </IconButton>
           <IconButton
             size="small"
             sx={{ padding: "0" }}
@@ -79,10 +125,14 @@ export const Charts: FC<ChartsProps> = ({
         </IconsGroup>
       </SectionHeader>
       <SectionBody>
-        <ChartsList>
-          <ChartsPie title="Income" data={dataIncome} />
-          <ChartsPie title="Expense" data={dataExpense} />
-        </ChartsList>
+        {isPieChart ? (
+          <ChartsList>
+            <ChartsPie title="Income" data={dataIncome} />
+            <ChartsPie title="Expense" data={dataExpense} />
+          </ChartsList>
+        ) : (
+          <ChartsBar data={dataChartsBar} />
+        )}
       </SectionBody>
       <ChartsForm
         open={isOpenModalCreate}

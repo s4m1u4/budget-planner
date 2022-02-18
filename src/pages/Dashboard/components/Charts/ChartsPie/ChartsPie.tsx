@@ -52,7 +52,7 @@ export const ChartsPie: FC<ChartsPieProps> = ({ title, data }) => {
             borderRadius: "6px",
           }}
         >
-          <p>{`${payload[0].name} - ${currency(amount).format()}`}</p>
+          <p>{`${payload[0].name}: ${currency(amount).format()}`}</p>
         </div>
       );
     }

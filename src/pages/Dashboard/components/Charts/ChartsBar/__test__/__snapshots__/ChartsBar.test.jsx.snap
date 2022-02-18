@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartsBar component snapshot matching 1`] = `
+<body>
+  <div>
+    <div
+      class="recharts-responsive-container"
+      style="width: 99%; height: 330px;"
+    />
+  </div>
+</body>
+`;

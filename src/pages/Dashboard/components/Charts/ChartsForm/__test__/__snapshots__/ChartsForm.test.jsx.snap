@@ -21,7 +21,7 @@ exports[`ChartsForm component snapshot matching 1`] = `
       tabindex="0"
     />
     <div
-      class="css-5fyqun"
+      class="MuiBox-root css-5fyqun"
       tabindex="-1"
     >
       <h3
@@ -108,7 +108,7 @@ exports[`ChartsForm component snapshot matching 1`] = `
           class="css-20ow0d"
         >
           <button
-            class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-ke5b6m-MuiButtonBase-root-MuiButton-root"
+            class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-wqakyb-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="submit"
           >
@@ -118,7 +118,7 @@ exports[`ChartsForm component snapshot matching 1`] = `
             />
           </button>
           <button
-            class="MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-1sszw6i-MuiButtonBase-root-MuiButton-root"
+            class="MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-p8fncj-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
