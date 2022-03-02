@@ -3,10 +3,18 @@ import { calculateRecords } from "../../helpers";
 import { CircularProgress, Container } from "@mui/material";
 import { FiltersSection } from "./components/FiltersSection";
 import { RecordsSection } from "./components/RecordsSection";
+import { OverviewSection } from "./components/OverviewSection";
 import { IFilters, RecordsProps } from "./types";
 import { IRecord } from "../../types";
+import { useDrop } from "react-dnd";
 
-import { Grid, ProgressWrapper, RecordsTitle, Wrapper } from "./Records.styles";
+import {
+  Grid,
+  GridItem,
+  ProgressWrapper,
+  RecordsTitle,
+  Wrapper,
+} from "./Records.styles";
 
 export const Records: FC<RecordsProps> = ({
   limit,
@@ -22,10 +30,8 @@ export const Records: FC<RecordsProps> = ({
 
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [filters, setFilters] = useState<IFilters>({
-    type: "",
-    category: "",
-  });
+  const [filters, setFilters] = useState<IFilters>({ type: "", category: "" });
+  const [selectedRecords, setSelectedRecords] = useState<IRecord[]>([]);
 
   const fetchData = useCallback(async () => {
     setIsLoading(true);
@@ -38,6 +44,19 @@ export const Records: FC<RecordsProps> = ({
     fetchData();
   }, [fetchData]);
 
+  const [{ isOver }, dropRef] = useDrop({
+    accept: "record",
+    drop: (item: IRecord) =>
+      setSelectedRecords((prevState: IRecord[]) =>
+        prevState.find((record: IRecord) => record.id === item.id)
+          ? prevState
+          : [...prevState, item]
+      ),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
+
   return (
     <Container>
       {isLoading ? (
@@ -48,14 +67,22 @@ export const Records: FC<RecordsProps> = ({
         <Wrapper>
           <RecordsTitle>Records page</RecordsTitle>
           <Grid>
-            <FiltersSection
-              setPage={setPage}
-              filters={filters}
-              setFilters={setFilters}
-              categories={categories}
-              getHistories={getHistories}
-              getFilteredHistories={getFilteredHistories}
-            />
+            <GridItem>
+              <FiltersSection
+                setPage={setPage}
+                filters={filters}
+                setFilters={setFilters}
+                categories={categories}
+                getHistories={getHistories}
+                getFilteredHistories={getFilteredHistories}
+              />
+              <OverviewSection
+                isOver={isOver}
+                dropRef={dropRef}
+                selectedRecords={selectedRecords}
+                setSelectedRecords={setSelectedRecords}
+              />
+            </GridItem>
             <RecordsSection
               page={page}
               setPage={setPage}

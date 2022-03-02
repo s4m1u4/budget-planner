@@ -44,7 +44,12 @@ export const Charts: FC<ChartsProps> = ({
   categories,
 }) => {
   useEffect(() => {
-    setIsPieChart(sessionStorage.getItem("charts") === "pie" ? true : false);
+    setIsPieChart(
+      sessionStorage.getItem("charts") === "pie" ||
+        sessionStorage.getItem("charts") === null
+        ? true
+        : false
+    );
   }, []);
 
   const [isPieChart, setIsPieChart] = useState<boolean>(true);

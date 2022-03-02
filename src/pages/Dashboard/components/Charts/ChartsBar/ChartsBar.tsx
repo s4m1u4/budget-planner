@@ -39,10 +39,16 @@ export const ChartsBar: FC<ChartsBarProps> = ({ data }) => {
         <div
           style={{
             color:
-              sessionStorage.getItem("theme") === "light" ? "#000" : "#fff",
+              sessionStorage.getItem("theme") === "light" ||
+              sessionStorage.getItem("theme") === null
+                ? "#000"
+                : "#fff",
             padding: "5px",
             backgroundColor:
-              sessionStorage.getItem("theme") === "light" ? "#fff" : "#303030",
+              sessionStorage.getItem("theme") === "light" ||
+              sessionStorage.getItem("theme") === null
+                ? "#fff"
+                : "#303030",
             border: "1px solid #cccc",
             borderRadius: "6px",
           }}

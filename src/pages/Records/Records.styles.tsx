@@ -22,6 +22,12 @@ export const Grid = styled.div({
   alignItems: "start",
 });
 
+export const GridItem = styled.div({
+  gap: "20px",
+  display: "grid",
+  gridTemplateColumns: "1fr",
+});
+
 export const Section = styled.div({
   borderRadius: "6px",
   border: "1px solid rgb(208, 215, 222)",
@@ -30,6 +36,7 @@ export const Section = styled.div({
 export const SectionHeader = styled.div({
   padding: "10px 15px",
   display: "flex",
+  alignItems: "center",
   justifyContent: "space-between",
   borderBottom: "1px solid rgb(208, 215, 222)",
 });
