@@ -6,6 +6,7 @@ import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { IFilters } from "../../../types";
 import { IRecord } from "../../../../../types";
+import { useDrag } from "react-dnd";
 
 import { Payment, PaymentTitle, PaymentTotal } from "../RecordsSection.styles";
 
@@ -34,8 +35,19 @@ export const RecordsItem: FC<RecordsItemProps> = ({
     handleClose();
   };
 
+  const [{ isDragging }, dragRef] = useDrag({
+    type: "record",
+    item: record,
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   return (
-    <Payment>
+    <Payment
+      ref={dragRef}
+      style={{ backgroundColor: isDragging ? "#f5f5f5" : "inherit" }}
+    >
       <RecordsItemModal
         record={record}
         open={isOpenModal}
