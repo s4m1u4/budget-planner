@@ -1,9 +1,9 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { calculateRecords } from "../../helpers";
+import { calculateRecords } from "helpers";
 import { Charts, Overview, Records } from "./components";
 import { CircularProgress, Container } from "@mui/material";
 import { DashboardProps } from "./types";
-import { IRecord } from "../../types";
+import { IRecord } from "types";
 
 import {
   Grid,

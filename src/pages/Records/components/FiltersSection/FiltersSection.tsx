@@ -3,7 +3,7 @@ import { FiltersOptions } from "./FiltersOptions";
 import { FiltersTypes } from "./FiltersTypes";
 import { FiltersCategories } from "./FiltersCategories";
 import { IFilters } from "../../types";
-import { ICategory } from "../../../../types";
+import { ICategory } from "types";
 
 import {
   Section,

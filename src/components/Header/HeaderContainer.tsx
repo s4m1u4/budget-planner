@@ -1,7 +1,7 @@
 import { compose } from "recompose";
 import { inject, observer } from "mobx-react";
-import { Header } from "./Header";
-import { HeaderProps } from "./types";
+import { HeaderProps } from "components/Header/types";
+import { Header } from "components/Header/Header";
 
 export const HeaderContainer = compose<HeaderProps, {}>(
   inject(

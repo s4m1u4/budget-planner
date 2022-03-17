@@ -1,6 +1,5 @@
-import { IUserData } from "../../types";
 import { IPasswordData } from "../Records/types";
-import { IAvatarLink } from "../../types/types";
+import { IAvatarLink, IUserData } from "types";
 
 export interface IParams {
   editMode: string;

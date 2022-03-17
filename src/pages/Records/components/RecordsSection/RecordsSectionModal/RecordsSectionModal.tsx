@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ModalComponent } from "../../../../../components/shared";
+import { ModalComponent } from "components/shared";
 import { Button } from "@mui/material";
 
 import { ButtonGroup, Title } from "./RecordsSectionModal.styles";

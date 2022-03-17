@@ -1,2 +1,2 @@
-export { Header } from "./Header/Header";
-export { HeaderContainer } from "./Header/HeaderContainer";
+export { Header } from "components/Header/Header";
+export { HeaderContainer } from "components/Header/HeaderContainer";

@@ -107,9 +107,31 @@ exports[`Charts component snapshot matching 1`] = `
         class="css-1gk4ta0"
       >
         <div
-          class="recharts-responsive-container"
-          style="width: 99%; height: 330px;"
-        />
+          class="css-3eas27"
+        >
+          <div>
+            <h4
+              class="css-sqlmve"
+            >
+              Income
+            </h4>
+            <div
+              class="recharts-responsive-container"
+              style="width: 99%; height: 300px;"
+            />
+          </div>
+          <div>
+            <h4
+              class="css-sqlmve"
+            >
+              Expense
+            </h4>
+            <div
+              class="recharts-responsive-container"
+              style="width: 99%; height: 300px;"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { calculateRecords } from "../../helpers";
+import { calculateRecords } from "helpers";
 import { CircularProgress, Container } from "@mui/material";
 import { FiltersSection } from "./components/FiltersSection";
 import { RecordsSection } from "./components/RecordsSection";
 import { OverviewSection } from "./components/OverviewSection";
 import { IFilters, RecordsProps } from "./types";
-import { IRecord } from "../../types";
+import { IRecord } from "types";
 import { useDrop } from "react-dnd";
 
 import {

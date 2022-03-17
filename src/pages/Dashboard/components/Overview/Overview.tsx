@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import currency from "currency.js";
 import { calculateBudgetAmount } from "./helpers";
-import { IRecord } from "../../../../types";
+import { IRecord } from "types";
 
 import {
   Section,

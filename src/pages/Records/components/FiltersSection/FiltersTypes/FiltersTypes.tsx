@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IFilters } from "../../../types";
-import { ICategory } from "../../../../../types";
+import { ICategory } from "types";
 
 interface FiltersTypesProps {
   filters: IFilters;

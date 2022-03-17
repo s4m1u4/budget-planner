@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import currency from "currency.js";
-import { ModalComponent } from "../../../../../../components/shared";
+import { ModalComponent } from "components/shared";
 import { Button } from "@mui/material";
-import { IRecord } from "../../../../../../types";
+import { IRecord } from "types";
 
 import { ButtonGroup, Payment, Title } from "./RecordsItemModal.styles";
-import { PaymentTitle, PaymentTotal } from "../../RecordsSection.styles";
+import { PaymentTotal } from "../../RecordsSection.styles";
 
 interface RecordsItemModalProps {
   open: boolean;
@@ -24,9 +24,9 @@ export const RecordsItemModal: FC<RecordsItemModalProps> = ({
     <ModalComponent open={open} onClose={handleClose}>
       <Title>Do you want to delete the record?</Title>
       <Payment>
-        <PaymentTitle>
+        <p>
           {record.type} from {record.category?.title}
-        </PaymentTitle>
+        </p>
         <PaymentTotal color={record.type}>
           {record.type === "income"
             ? currency(record.amount, { pattern: `+!#` }).format()

@@ -9,8 +9,6 @@ export const Payment = styled.div({
   border: "1px solid rgb(208, 215, 222)",
 });
 
-export const PaymentTitle = styled.p({});
-
 export const PaymentTotal = styled.span((props) => ({
   color:
     props.color === "income"

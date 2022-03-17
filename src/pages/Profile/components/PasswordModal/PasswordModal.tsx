@@ -3,10 +3,10 @@ import {
   ButtonComponent,
   InputComponent,
   ModalComponent,
-} from "../../../../components/shared";
+} from "components/shared";
 import { PasswordModalSchema } from "./PasswordModalSchema";
 import { useFormik } from "formik";
-import { IPasswordData } from "../../../Records/types";
+import { IPasswordData } from "pages/Records/types";
 import { Alert } from "@mui/material";
 
 import { ButtonGroup, Title } from "./PasswordModal.styles";

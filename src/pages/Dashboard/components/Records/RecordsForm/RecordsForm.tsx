@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import { ModalComponent } from "../../../../../components/shared";
+import { ModalComponent } from "components/shared";
 import { Button, MenuItem, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { RecordsFormSchema } from "./RecordsFormSchema";
 import { IHistoryData } from "../../../types";
-import { ICategory } from "../../../../../types";
+import { ICategory } from "types";
 
 import { ButtonGroup, Form, Title } from "./RecordsForm.styles";
 

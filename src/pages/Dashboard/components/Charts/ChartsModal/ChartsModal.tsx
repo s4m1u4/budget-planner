@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { useFormik } from "formik";
 import { ChartsModalSchema } from "./ChartsModalSchema";
-import { ModalComponent } from "../../../../../components/shared";
+import { ModalComponent } from "components/shared";
 import { Button, MenuItem, TextField } from "@mui/material";
-import { ICategory } from "../../../../../types";
+import { ICategory } from "types";
 
 import { ButtonGroup, Title } from "./ChartsModal.styles";
 

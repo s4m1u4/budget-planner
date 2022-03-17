@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useFormik } from "formik";
 import { ChartsFormSchema } from "./ChartsFormSchema";
-import { ModalComponent } from "../../../../../components/shared";
+import { ModalComponent } from "components/shared";
 import { Button, TextField } from "@mui/material";
 import { ICategoryData } from "../../../types";
 

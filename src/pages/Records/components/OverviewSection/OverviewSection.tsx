@@ -1,7 +1,7 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
 import { RecordsList } from "./RecordsList";
-import { IRecord } from "../../../../types";
-import { calculateBudgetAmount } from "../../../Dashboard/components/Overview/helpers";
+import { IRecord } from "types";
+import { calculateBudgetAmount } from "pages/Dashboard/components/Overview/helpers";
 import { ConnectDropTarget } from "react-dnd";
 import currency from "currency.js";
 

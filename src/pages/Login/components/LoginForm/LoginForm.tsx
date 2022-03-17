@@ -3,8 +3,8 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert, Box, Button, TextField, Typography } from "@mui/material";
 import { LoginFormSchema } from "./LoginFormSchema";
-import { LoginProps } from "../../types";
-import { IUserAuthenticationData } from "../../../../types";
+import { LoginProps } from "pages/Login/types";
+import { IUserAuthenticationData } from "types";
 
 import { boxForm, boxInfo, form, title } from "./LoginForm.styles";
 

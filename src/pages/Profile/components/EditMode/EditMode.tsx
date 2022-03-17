@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Formik, Form } from "formik";
 import { EditModeSchema } from "./EditModeSchema";
-import { IUserData } from "../../../../types";
-import { ButtonComponent, InputComponent } from "../../../../components/shared";
+import { IUserData } from "types";
+import { ButtonComponent, InputComponent } from "components/shared";
 import { PasswordModal } from "../PasswordModal";
-import { IPasswordData } from "../../../Records/types";
+import { IPasswordData } from "pages/Records/types";
 
 import { ButtonGroup } from "./EditMode.styles";
 

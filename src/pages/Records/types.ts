@@ -1,4 +1,4 @@
-import { ICategory, IHistory } from "../../types";
+import { ICategory, IHistory } from "types";
 
 export interface RecordsProps {
   limit: number;

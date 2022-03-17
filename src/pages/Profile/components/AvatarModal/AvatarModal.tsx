@@ -4,9 +4,9 @@ import {
   ButtonComponent,
   InputComponent,
   ModalComponent,
-} from "../../../../components/shared";
+} from "components/shared";
 import { AvatarModalSchema } from "./AvatarModalSchema";
-import { IAvatarLink, IUserData } from "../../../../types/types";
+import { IAvatarLink, IUserData } from "types";
 
 import { ButtonGroup, Title } from "./AvatarModal.styles";
 

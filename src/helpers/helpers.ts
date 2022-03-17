@@ -1,4 +1,4 @@
-import { ICategory, IHistory } from "../types";
+import { ICategory, IHistory } from "types";
 
 export const setToken = (token: string) =>
   sessionStorage.setItem("token", token);

@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { clearToken } from "../../../../helpers";
+import { clearToken } from "helpers";
 import { HeaderProps } from "../../types";
 
 export const HeaderMenu: FC<HeaderProps> = ({

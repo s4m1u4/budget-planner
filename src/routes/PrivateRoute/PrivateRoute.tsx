@@ -1,6 +1,6 @@
 import React, { FC, ReactChild, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { isAuth } from "../../helpers";
+import { isAuth } from "helpers";
 
 interface IPrivateRoute {
   children: ReactChild | ReactNode;

@@ -5,10 +5,10 @@ import { RecordsItemModal } from "./RecordsItemModal";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { IFilters } from "../../../types";
-import { IRecord } from "../../../../../types";
+import { IRecord } from "types";
 import { useDrag } from "react-dnd";
 
-import { Payment, PaymentTitle, PaymentTotal } from "../RecordsSection.styles";
+import { Payment, PaymentTotal } from "../RecordsSection.styles";
 
 interface RecordsItemProps {
   page: number;
@@ -54,9 +54,9 @@ export const RecordsItem: FC<RecordsItemProps> = ({
         handleClose={handleClose}
         handleDeleteRecord={handleDeleteRecord}
       />
-      <PaymentTitle>
+      <p>
         {record.type} from {record.category?.title}
-      </PaymentTitle>
+      </p>
       <Stack direction="row" sx={{ alignItems: "center", gap: "5px" }}>
         <PaymentTotal color={record.type}>
           {record.type === "income"

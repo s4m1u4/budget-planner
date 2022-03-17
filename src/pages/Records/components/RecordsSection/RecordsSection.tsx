@@ -4,7 +4,7 @@ import { RecordsList } from "./RecordsList";
 import { RecordsSectionModal } from "./RecordsSectionModal";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { IFilters } from "../../types";
-import { IRecord } from "../../../../types";
+import { IRecord } from "types";
 
 import {
   Section,

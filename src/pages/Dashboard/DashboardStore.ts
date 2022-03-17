@@ -1,8 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { getToken } from "../../helpers";
-import { ICategory, IHistory } from "../../types";
+import { getToken } from "helpers";
+import { ICategory, IHistory } from "types";
 import { ICategoryData, IHistoryData } from "./types";
-import { IAPI } from "../../services/API.service";
+import { IAPI } from "services/API.service";
 
 export interface IDashboardStore {
   limit: number;

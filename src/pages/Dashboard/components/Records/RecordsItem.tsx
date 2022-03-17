@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import currency from "currency.js";
-import { IRecord } from "../../../../types";
+import { IRecord } from "types";
 
 import { Payment, PaymentTitle, PaymentTotal } from "../../Dashboard.styles";
 

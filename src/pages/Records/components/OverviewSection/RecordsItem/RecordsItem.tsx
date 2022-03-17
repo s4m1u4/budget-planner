@@ -2,11 +2,10 @@ import React, { Dispatch, FC, SetStateAction } from "react";
 import currency from "currency.js";
 import { IconButton, Stack } from "@mui/material";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import { IRecord } from "../../../../../types";
+import { IRecord } from "types";
 
 import {
   Payment,
-  PaymentTitle,
   PaymentTotal,
 } from "../../RecordsSection/RecordsSection.styles";
 
@@ -27,9 +26,9 @@ export const RecordsItem: FC<RecordsItemProps> = ({
 
   return (
     <Payment>
-      <PaymentTitle>
+      <p>
         {record.type} from {record.category?.title}
-      </PaymentTitle>
+      </p>
       <Stack direction="row" sx={{ alignItems: "center", gap: "5px" }}>
         <PaymentTotal color={record.type}>
           {record.type === "income"

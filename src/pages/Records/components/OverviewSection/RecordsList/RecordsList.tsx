@@ -1,6 +1,6 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
 import { RecordsItem } from "../RecordsItem";
-import { IRecord } from "../../../../../types";
+import { IRecord } from "types";
 
 import { RecordsListWrapper } from "./RecordsList.styles";
 

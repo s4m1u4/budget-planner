@@ -1,7 +1,7 @@
 import { LoginContainer } from "../../Login";
 import { SignupContainer } from "../SignupContainer";
 import { Provider } from "mobx-react";
-import { RootStore } from "../../../store/RootStore";
+import { RootStore } from "src/store/RootStore";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";

@@ -1,4 +1,4 @@
-import { IRecord } from "../../../../types";
+import { IRecord } from "types";
 
 export const calculateRecordsIncome: (records: IRecord[]) => IRecord[] = (
   records: IRecord[]

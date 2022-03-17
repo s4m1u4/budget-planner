@@ -18,7 +18,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import { ICategoryData } from "../../types";
-import { ICategory, IRecord } from "../../../../types";
+import { ICategory, IRecord } from "types";
 import { ChartsModal } from "./ChartsModal";
 
 import {
@@ -28,7 +28,7 @@ import {
   SectionTitle,
 } from "../../Dashboard.styles";
 import { ChartsList } from "./Charts.styles";
-import { IconsGroup } from "../../../Records/Records.styles";
+import { IconsGroup } from "pages/Records/Records.styles";
 
 interface ChartsProps {
   records: IRecord[];

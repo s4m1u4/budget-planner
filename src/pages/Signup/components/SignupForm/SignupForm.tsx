@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignupFormSchema } from "./SignupFormSchema";
 import { boxForm, boxInfo, form, title } from "./SignupForm.styles";
 import { SignupProps } from "../../types";
-import { IUserRegistrationData } from "../../../../types";
+import { IUserRegistrationData } from "types";
 
 export const SignupForm: FC<SignupProps> = ({ onSubmit, userRegistration }) => {
   const navigate = useNavigate();

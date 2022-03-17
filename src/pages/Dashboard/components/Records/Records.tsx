@@ -3,7 +3,7 @@ import { IconButton } from "@mui/material";
 import { RecordsForm } from "./RecordsForm";
 import { RecordsList } from "./RecordList";
 import AddCircleOutlineSharpIcon from "@mui/icons-material/AddCircleOutlineSharp";
-import { ICategory, IRecord } from "../../../../types";
+import { ICategory, IRecord } from "types";
 import { IHistoryData } from "../../types";
 
 import {

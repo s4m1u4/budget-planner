@@ -1,4 +1,4 @@
-import { IRecord } from "../../../../types";
+import { IRecord } from "types";
 
 export const calculateBudgetAmount: (records: IRecord[]) => number = (
   records: IRecord[]

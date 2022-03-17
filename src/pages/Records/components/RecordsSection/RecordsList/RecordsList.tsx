@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { RecordsItem } from "../RecordsItem";
 import { IFilters } from "../../../types";
-import { IRecord } from "../../../../../types";
+import { IRecord } from "types";
 
 import { RecordsListWrapper } from "./RecordsList.styles";
 

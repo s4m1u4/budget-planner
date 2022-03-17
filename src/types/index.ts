@@ -3,6 +3,7 @@ export type {
   IHistory,
   ICategory,
   IUserData,
+  IAvatarLink,
   IFetchRequestValues,
   IUserAuthenticationData,
   IUserRegistrationData,

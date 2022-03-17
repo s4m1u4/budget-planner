@@ -1,4 +1,4 @@
-import { ICategory, IHistory, IRecord } from "../../types";
+import { ICategory, IHistory, IRecord } from "types";
 
 export interface DashboardProps {
   records: IRecord[];

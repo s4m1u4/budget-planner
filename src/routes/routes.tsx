@@ -5,7 +5,7 @@ import {
   ProfileContainer,
   DashboardContainer,
   RecordsContainer,
-} from "../pages";
+} from "pages";
 import { Navigate } from "react-router-dom";
 
 export const routes = [

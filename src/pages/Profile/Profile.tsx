@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "../../hocs";
+import { withRouter } from "hocs";
 import { EditMode } from "./components";
 import {
   Avatar,
@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { ProfileProps, ProfileState } from "./types";
-import { IUserData } from "../../types";
+import { IUserData } from "types";
 import { AvatarModal } from "./components/AvatarModal";
 
 import { ProfileTitle, ProgressBox, Wrapper } from "./Profile.styles";

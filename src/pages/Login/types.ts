@@ -1,4 +1,4 @@
-import { IUserAuthenticationData } from "../../types";
+import { IUserAuthenticationData } from "types";
 
 export interface LoginProps {
   onSubmit: (values: IUserAuthenticationData) => void;
