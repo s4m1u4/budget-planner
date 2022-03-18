@@ -1,6 +1,6 @@
-import { Dashboard } from "./Dashboard";
 import { compose } from "recompose";
 import { inject, observer } from "mobx-react";
+import { Dashboard } from "./Dashboard";
 import { DashboardProps } from "./types";
 
 export const DashboardContainer = compose<DashboardProps, {}>(

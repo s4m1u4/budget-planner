@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { getToken, isAuth, setToken } from "helpers";
+import { IAPI } from "services/api";
 import {
-  IAvatarLink,
-  IUserAuthenticationData,
   IUserData,
+  IAvatarLink,
   IUserRegistrationData,
+  IUserAuthenticationData,
 } from "types";
-import { IAPI } from "services/API.service";
 import { IPasswordData } from "pages/Records/types";
 
 export interface IUserStore {

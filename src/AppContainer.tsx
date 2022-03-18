@@ -1,11 +1,7 @@
-import { App } from "./App";
+import { App } from "App";
+import { AppProps } from "types";
 import { compose } from "recompose";
 import { inject, observer } from "mobx-react";
-
-export interface AppProps {
-  isAuth: boolean;
-  getUserData: () => void;
-}
 
 export const AppContainer = compose<AppProps, {}>(
   inject(

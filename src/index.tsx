@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "mobx-react";
-import { RootStore } from "./store/RootStore";
-import { AppContainer } from "./AppContainer";
-import { ThemeContainer } from "./components/Theme";
+import { RootStore } from "store/RootStore";
+import { AppContainer } from "AppContainer";
+import { ThemeContainer } from "components/Theme";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 

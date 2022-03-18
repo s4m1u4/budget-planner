@@ -1,25 +1,12 @@
 import { Records } from "../Records";
 import { act, render, screen } from "@testing-library/react";
 import { CATEGORIES, HISTORIES } from "./__mock__";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const renderComponent = () => {
   return render(
-    <Records
-      limit={10000}
-      categories={CATEGORIES}
-      histories={HISTORIES}
-      getHistories={getHistories}
-      deleteHistory={deleteHistory}
-      getCategories={getCategories}
-      deleteAllHistories={deleteAllHistories}
-      getFilteredHistories={getFilteredHistories}
-    />
-  );
-};
-
-const renderComponentAsync = async () => {
-  await act(async () => {
-    await render(
+    <DndProvider backend={HTML5Backend}>
       <Records
         limit={10000}
         categories={CATEGORIES}
@@ -30,6 +17,25 @@ const renderComponentAsync = async () => {
         deleteAllHistories={deleteAllHistories}
         getFilteredHistories={getFilteredHistories}
       />
+    </DndProvider>
+  );
+};
+
+const renderComponentAsync = async () => {
+  await act(async () => {
+    await render(
+      <DndProvider backend={HTML5Backend}>
+        <Records
+          limit={10000}
+          categories={CATEGORIES}
+          histories={HISTORIES}
+          getHistories={getHistories}
+          deleteHistory={deleteHistory}
+          getCategories={getCategories}
+          deleteAllHistories={deleteAllHistories}
+          getFilteredHistories={getFilteredHistories}
+        />
+      </DndProvider>
     );
   });
 };

@@ -2,7 +2,7 @@ import axios from "axios";
 import { ProfileContainer } from "../ProfileContainer";
 import { Provider } from "mobx-react";
 import { render, screen } from "@testing-library/react";
-import { RootStore } from "src/store/RootStore";
+import { RootStore } from "../../../store/RootStore";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 

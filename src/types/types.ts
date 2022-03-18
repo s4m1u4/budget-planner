@@ -1,5 +1,10 @@
 import { Method } from "axios";
 
+export interface AppProps {
+  isAuth: boolean;
+  getUserData: () => void;
+}
+
 export interface ICategory {
   id: string;
   title: string;

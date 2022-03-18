@@ -7,7 +7,7 @@ exports[`Records section component snapshot matching 1`] = `
       class="css-zeiouw"
     >
       <div
-        class="css-13o2qpx"
+        class="css-1caytb6"
       >
         <h3
           class="css-1xqtn9i"
@@ -44,10 +44,10 @@ exports[`Records section component snapshot matching 1`] = `
         >
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -102,10 +102,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -160,10 +160,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -218,10 +218,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               expense
                from 
             </p>
@@ -276,10 +276,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               expense
                from 
             </p>
@@ -334,10 +334,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -392,10 +392,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               expense
                from 
             </p>
@@ -450,10 +450,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               expense
                from 
             </p>
@@ -508,10 +508,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -566,10 +566,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -624,10 +624,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -682,10 +682,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -740,10 +740,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -798,10 +798,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -856,10 +856,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -914,10 +914,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>
@@ -972,10 +972,10 @@ exports[`Records section component snapshot matching 1`] = `
           </div>
           <div
             class="css-1mavqmw"
+            draggable="true"
+            style="background-color: inherit;"
           >
-            <p
-              class="css-0"
-            >
+            <p>
               income
                from 
             </p>

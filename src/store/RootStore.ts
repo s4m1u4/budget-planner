@@ -1,8 +1,6 @@
-import { API } from "services";
-import { IUserStore, UserStore } from "./UserStore";
-import { DashboardStore } from "pages/Dashboard";
-import { IDashboardStore } from "pages/Dashboard/DashboardStore";
-import { IAPI } from "services/API.service";
+import { API, IAPI } from "services/api";
+import { UserStore, IUserStore } from "store/UserStore";
+import { DashboardStore, IDashboardStore } from "pages/Dashboard";
 
 export class RootStore {
   api: IAPI = new API();
